@@ -412,7 +412,51 @@
 			},
 			"properties":{
 				"club":{
-					"extends":"uri://registries/organizations#blocks/club"
+					"$ref":"uri://registries/organizations#blocks/club"
+				},
+				"logoInfo":{
+					"$ref":"uri://registries/organizations#blocks/logoInfo"
+				},
+				"clubAdress":{
+					"$ref":"uri://registries/organizations#blocks/clubAdress"
+				}
+			}
+		},
+		"club-km":{
+			"table": "organizations",
+			"title":"Klub",
+			"transCode":"schema.club.title",
+			"security": {
+				"create": {
+					"static": [
+						"Club - write - KM"
+					]
+				},
+				"read": {
+					"static": [
+						"Club - read - KM"
+					]
+				},
+				"modify": {
+					"static": [
+						"Club - write - KM"
+					]
+				}
+			},
+			"forcedCriteria": [
+				{
+					"f": "club",
+					"op": "ex",
+					"v": ""
+				}
+			],
+			"fireEvents":{
+				"create": "event-agecategory-created",
+				"update": "event-agecategory-updated"
+			},
+			"properties":{
+				"club":{
+					"$ref":"uri://registries/organizations#blocks/club"
 				},
 				"logoInfo":{
 					"$ref":"uri://registries/organizations#blocks/logoInfo"
@@ -445,16 +489,16 @@
 			},
 			"properties":{
 				"baseData":{
-					"extends":"uri://registries/organizations#blocks/baseData"
+					"$ref":"uri://registries/organizations#blocks/baseData"
 				},
 				"club":{
-					"extends":"uri://registries/organizations#blocks/club"
+					"$ref":"uri://registries/organizations#blocks/club"
 				},
 				"clubAdress":{
 					"$ref":"uri://registries/organizations#blocks/clubAdress"
 				},
 				"association":{
-					"extends":"uri://registries/organizations#blocks/association"
+					"$ref":"uri://registries/organizations#blocks/association"
 				},
 				"associationAdress":{
 					"$ref":"uri://registries/organizations#blocks/associationAdress"
@@ -516,10 +560,10 @@
 	"views":{
 		"club":{
 			"new":{
-				"extends":"uri://registries/organizations#models/club"
+				"$ref":"uri://registries/organizations#models/club"
 			},
 			"view":{
-				"extends":"uri://registries/organizations#models/club"
+				"$ref":"uri://registries/organizations#models/club"
 			},
 			"search":{
 				"extends":"uri://registries/organizations#models/club",
@@ -555,12 +599,86 @@
 				]
 			}
 		},
-		"company":{
+		"club-km":{
 			"new":{
-				"extends":"uri://registries/organizations#models/company"
+				"$ref":"uri://registries/organizations#views/club-km/view"
 			},
 			"view":{
-				"extends":"uri://registries/organizations#models/company"
+				"extends":"uri://registries/organizations#models/club-km",
+				"properties": {
+					"club": {
+						"properties": {
+							"codeOfClub": {
+								"readOnly": true
+							},
+							"name": {
+								"readOnly": true
+							},
+							"association": {
+								"readOnly": true
+							},
+							"ico": {
+								"readOnly": true
+							},
+							"startDate": {
+								"readOnly": true
+							},
+							"stadium": {
+								"readOnly": true
+							},
+							"stateOfClub": {
+								"readOnly": true
+							},
+							"notPaying": {
+								"readOnly": true
+							},
+							"dateOfRegistration": {
+								"readOnly": true
+							}
+						}
+					}
+				}
+			},
+			"search":{
+				"extends":"uri://registries/organizations#models/club-km",
+				"properties":{
+					"logoInfo": null
+				},
+				"listFields": [
+					{
+						"field": "club.name",
+						"title": "Názov klubu",
+						"transCode": "schema.org.club.name"
+					},
+					{
+						"field": "club.association.refData.name",
+						"title": "Zväz",
+						"transCode": "schema.org.club.association"
+					},
+					{
+						"field": "clubAdress.city",
+						"title": "Mesto",
+						"transCode": "schema.towns.town"
+					},
+					{
+						"field": "club.stateOfClub",
+						"title": "Stav klubu",
+						"transCode": "schema.org.club.stateOfClub"
+					},
+					{
+						"field": "club.notPaying",
+						"title": "Neplatič",
+						"transCode": "schema.org.club.notPaying"
+					}
+				]
+			}
+		},
+		"company":{
+			"new":{
+				"$ref":"uri://registries/organizations#models/company"
+			},
+			"view":{
+				"$ref":"uri://registries/organizations#models/company"
 			},
 			"search":{
 				"extends":"uri://registries/organizations#models/company",
@@ -578,10 +696,10 @@
 		},
 		"association":{
 			"new":{
-				"extends":"uri://registries/organizations#models/association"
+				"$ref":"uri://registries/organizations#models/association"
 			},
 			"view":{
-				"extends":"uri://registries/organizations#models/association"
+				"$ref":"uri://registries/organizations#models/association"
 			},
 			"search":{
 				"extends":"uri://registries/organizations#models/association",
@@ -612,6 +730,5 @@
 				]
 			}
 		}
-
 	}
 }

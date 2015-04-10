@@ -93,14 +93,7 @@
 							"license": "coach.coachLicense",
 							"licenseType": "coach.coachLicenseType"
 						}
-					},
-					"objectLinkForcedCriteria": [
-						{
-							"f": "coach.isCoach",
-							"op": "eq",
-							"v": "TRUE"
-						}
-					]
+					}
 				},
 				"aCoach1": {
 					"title": "Asistent Trénera",
@@ -114,14 +107,7 @@
 							"license": "coach.coachLicense",
 							"licenseType": "coach.coachLicenseType"
 						}
-					},
-					"objectLinkForcedCriteria": [
-						{
-							"f": "coach.isCoach",
-							"op": "eq",
-							"v": "TRUE"
-						}
-					]
+					}
 				},
 				"aCoach2": {
 					"title": "Asistent Trénera",
@@ -135,14 +121,7 @@
 							"license": "coach.coachLicense",
 							"licenseType": "coach.coachLicenseType"
 						}
-					},
-					"objectLinkForcedCriteria": [
-						{
-							"f": "coach.isCoach",
-							"op": "eq",
-							"v": "TRUE"
-						}
-					]
+					}
 				},
 				"aCoach3": {
 					"title": "Asistent Trénera",
@@ -156,14 +135,7 @@
 							"license": "coach.coachLicense",
 							"licenseType": "coach.coachLicenseType"
 						}
-					},
-					"objectLinkForcedCriteria": [
-						{
-							"f": "coach.isCoach",
-							"op": "eq",
-							"v": "TRUE"
-						}
-					]
+					}
 				},
 				"aCoach4": {
 					"title": "Asistent Trénera",
@@ -177,14 +149,7 @@
 							"license": "coach.coachLicense",
 							"licenseType": "coach.coachLicenseType"
 						}
-					},
-					"objectLinkForcedCriteria": [
-						{
-							"f": "coach.isCoach",
-							"op": "eq",
-							"v": "TRUE"
-						}
-					]
+					}
 				},
 				"aCoach5": {
 					"title": "Asistent Trénera",
@@ -198,14 +163,7 @@
 							"license": "coach.coachLicense",
 							"licenseType": "coach.coachLicenseType"
 						}
-					},
-					"objectLinkForcedCriteria": [
-						{
-							"f": "coach.isCoach",
-							"op": "eq",
-							"v": "TRUE"
-						}
-					]
+					}
 				}
 			}
 		},
@@ -227,7 +185,7 @@
 							"fields": {
 								"surName": "baseData.surName",
 								"firstName": "baseData.name",
-								"birthDate": "baseData.birthDate",
+								"birthDate": "baseData.birthDate"
 							}
 						},
 						"required": true
