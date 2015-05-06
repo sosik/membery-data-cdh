@@ -1,24 +1,12 @@
 <div class="x-portal-widget-showcase-view">{% for article in data.articles %}
 	<article class="showcase-item-{{ article.id }}">
-	{% if article.img.img %}<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img.img|safe }}'); background-size: cover; background-repeat: no-repeat;"></div>{% endif %}
-	<div class="x-portal-widget-showcase-view-textblock">
-		<a href="/article/{{ article.id }}">{{ article.title|safe }}</a>
-		{{ article.abstract|safe }}
-	</div>
+	{% if article.img.img %}
+	<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img.img|safe }}'); background-size: cover; background-repeat: no-repeat;">
+		<div class="x-portal-widget-showcase-transparent">
+			<img src="./portal/img/transparent-logo.png">
+		</div>
+	</div>{% endif %}
+	
 	</article>
-{% endfor %}
-</div>
-
-<div class="x-portal-widget-showcase-navigation">
-	<a href="#" class="prev">
-		<i class="fa fa-chevron-left"></i>
-	</a>
-	<div>
-		{% for article in data.articles %}
-			<a href="#" class="item"></span>
-		{% endfor %}
-	</div>
-	<a href="#" class="next">
-		<i class="fa fa-chevron-right"></i>
-	</a>
+	{% endfor %}
 </div>

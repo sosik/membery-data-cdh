@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>SZH - index</title>
+	<title>CityDownHill</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="/portal/css/portal.css">
 	<link rel="stylesheet" type="text/css" href="/portal/css/font-awesome.min.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
 </head>
 
 <body>
@@ -28,133 +29,523 @@
 						<i class="fa fa-align-justify"></i>
 					</a>
 				</div>
-				<h1>Slovenský Zväz Hádzanej</h1>
-				<a href="/"><img class="portal-logo" src="/portal/img/portal-logo.png" alt="logo" title="SLOVENSKÝ ZVÄZ HÁDZANEJ" /></a>
-				<div id="portal-main-header-logo-area">
-					<img src="/portal/img/logo_sk_ol_vybor.png" alt="logo" title="Slovenský Olympijský Výbor" width="70px" height="70px" style="margin-left: 1px;"/>
-					<img src="/portal/img/logo_ehf.png" alt="logo" title="EHF" width="70px" height="70px" />
-					<img src="/portal/img/logo_ihf.png" alt="logo" title="IHF" width="70px" height="70px" />
+				<div class="portal-social-panel">
+					<ul>
+						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><button class="sign-in" name="sign">SIGN IN</button></li>
+					</ul>
+				</div>
+				<a href="/"><img class="portal-logo" src="../client/img/portal-logo.png" alt="logo" title="CITY DOWNHILL" /></a>
+				<div id="portal-menu-panel-container">
+					{% block menu %}
+						<ul id="portal-menu-panel">
+							{%for k in menu %}
+								<li class="portal-menu-entry">
+									<a href="#portal-content-{{k.name}}"><span>{{k.name}}<span></a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endblock menu %}
 				</div>
 			</header>
 		</div>
-		<div id="portal-menu-panel-container">
-			{% block menu %}
-				<div id="portal-menu-panel">
-					{%for k in menu %}
-						<div class="portal-menu-entry"><a href="/article/{{k.aid}}">{{k.name}}</a>
-							<div class="portal-sub-menu">
-								{% for s in k.subElements %}
-									<div><a href="/article/{{s.aid}}">{{s.name}}</a></div>
-								{% endfor %}
-							</div>
-						</div>
+		
+		<div id="portal-content-container">
+			<div id="portal-content-bg">
+				<div id="portal-main-content">
+					{% for widget in article.data %}
+						<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }}">
+							{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
+							{% include templatePath with widget only %}
+						</article>
 					{% endfor %}
 				</div>
-			{% endblock menu %}
-		</div>
-		<div id="portal-content-container">
-			<div id="portal-main-content">
-				{% for widget in article.data %}
-					<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }}">
-						{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
-						{% include templatePath with widget only %}
-					</article>
-				{% endfor %}
-			</div>
-			<div id="portal-side-content">
-				<section class="portal-side-panel-logos">
-					<img src="/portal/img/logo_seha.png" height="251px" align="middle"></img>
-					<div class="portal-side-panel-logos-sep"></div>
-					<img src="/portal/img/sk_sien_slavy.png" height="251px" align="middle"></img>
-				</section>
-				<section class="portal-side-panel x-portal-competition-results">
-					<header>Poradie</header>
-					<div style="width:100%;"><select style="width:100%; padding-top: 5px; padding-bottom: 5px; padding-left: 36px; margin-top: 5px; margin-bottom: 5px;" class="x-portal-competition-selector"><option>Extraliga - Muži</option></select></div>
-
-					<table style="width:100%; padding-top: 1px;" class="rowtable">
-					</table>
-				</section>
-				<section class="portal-side-panel">
-					<div style="text-align: center;"><img src="/portal/img/mskolsr.png"></img></div>
-					<div style="text-align: center; padding-top: 5px;">ROK 2014 719 200,- EUR</div>
-				</section>
-				<section class="portal-side-panel partneri">
-					<header>Partneri</header>
-					<article>
-						<div style="text-align: center; padding-top: 5px;">Hlavný reklamný partner reprezentačného družstva žien</div>
-						<div style="text-align: center; padding-top: 5px; padding-left: 10px; height: 200px; vertical-align: middle; display: table-cell;"><img style="" src="/portal/img/retic.png"></img></div>
-					</article>
-					<article>
-						<div style="text-align: center; padding-top: 5px;">Reklamný partner reprezentačného družstva</div>
-						<div style="text-align: center; padding-top: 5px; padding-left: 10px; height: 200px; vertical-align: middle; display: table-cell;"><img style="" src="/portal/img/logo-adidas.png"></img></div>
-					</article>
-					<article>
-						<div style="text-align: center; padding-top: 5px;">Reklamný partner </div>
-						<div style="text-align: center; padding-top: 5px; padding-left: 10px; height: 200px; vertical-align: middle; display: table-cell;"><img style="" src="/portal/img/logo-sport.png"></img></div>
-					</article>
-					<article>
-						<div style="text-align: center; padding-top: 5px;">Reklamný partner </div>
-						<div style="text-align: center; padding-top: 5px; padding-left: 10px; height: 200px; vertical-align: middle; display: table-cell;"><img style="" src="/portal/img/sita.png"></img></div>
-					</article>
-					<article>
-						<div style="text-align: center; padding-top: 5px;">Reklamný partner </div>
-						<div style="text-align: center; padding-top: 5px; padding-left: 10px; height: 200px; vertical-align: middle; display: table-cell;"><img style="" src="/portal/img/ministerstvosvvs.png"></img></div>
-					</article>
-				</section>
-				<section class="portal-side-panel">
-					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FSlovenskyZvazHadzanej&amp;width=300px&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300pxpx; height:590px;" allowTransparency="true"></iframe>
-				</section>
+				<div id="portal-content-location">
+					<div class="x-portal-widget-navigation-prev">
+						<a href="" class="prev"><img src="../client/img/prev.png" height="32" width="32" alt=""></a>
+					</div>
+					<div class="portal-content-location-container">
+						<h1 class="portal-content-title">
+							LOCATION 2015
+							<hr width="30%">
+						</h1>
+						<div class="location-slider">
+							<div class="location-slider-item">
+								<a href="">
+									<div class="slider-item-image">
+										<img src="../client/img/item1.png" height="79" width="74" alt="logo-location">
+									</div>
+								</a>
+								<div class="slider-item-title">
+									TAXCO
+								</div>
+								<div class="slider-item-abstract">
+									25.07.2015
+								</div>
+								<div class="slider-item-text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, vero, quisquam. Similique officia laboriosam ratione illo vero architecto mollitia aspernatur? Excepturi quo a nisi placeat recusandae magnam sint dolorem, architecto.
+								</div>
+								<div class="slider-item-more">
+									<a href="">Read more ...</a>
+								</div>
+							</div>
+							<div class="location-slider-item">
+								<a href="">
+									<div class="slider-item-image">
+										<img src="../client/img/item2.png" height="71" width="97" alt="logo-location">
+									</div>
+								</a>
+								<div class="slider-item-title">
+									VALPARAISO
+								</div>
+								<div class="slider-item-abstract">
+									25.07.2015
+								</div>
+								<div class="slider-item-text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, vero, quisquam. Similique officia laboriosam ratione illo vero architecto mollitia aspernatur? Excepturi quo a nisi placeat recusandae magnam sint dolorem, architecto.
+								</div>
+								<div class="slider-item-more">
+									<a href="">Read more ...</a>
+								</div>
+							</div>
+							<div class="location-slider-item">
+								<a href="">
+									<div class="slider-item-image">
+										<img src="../client/img/item3.png" height="62" width="86" alt="logo-location">
+									</div>
+								</a>
+								<div class="slider-item-title">
+									BRATISLAVA
+								</div>
+								<div class="slider-item-abstract">
+									25.07.2015
+								</div>
+								<div class="slider-item-text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, vero, quisquam. Similique officia laboriosam ratione illo vero architecto mollitia aspernatur? Excepturi quo a nisi placeat recusandae magnam sint dolorem, architecto.
+								</div>
+								<div class="slider-item-more">
+									<a href="">Read more ...</a>
+								</div>
+							</div>
+							<div class="location-slider-item">
+								<a href="">
+									<div class="slider-item-image">
+										<img src="../client/img/item4.png" height="80" width="85" alt="logo-location">
+									</div>
+								</a>
+								<div class="slider-item-title">
+									BIKE TOWN
+								</div>
+								<div class="slider-item-abstract">
+									25.07.2015
+								</div>
+								<div class="slider-item-text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, vero, quisquam. Similique officia laboriosam ratione illo vero architecto mollitia aspernatur? Excepturi quo a nisi placeat recusandae magnam sint dolorem, architecto.
+								</div>
+								<div class="slider-item-more">
+									<a href="">Read more ...</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="x-portal-widget-navigation-next">
+						<a href="" class="next"><img src="../client/img/next.png" height="32" width="32" alt=""></a>
+					</div>
+				</div>
+				<div id="portal-content-nextrace">
+					<div class="portal-content-nextrace-container">
+						<h1 class="portal-content-title white">
+							NEXT RACE
+							<hr width="30%">
+						</h1>
+						<div class="nextrace-container left">
+							<div class="nextrace-title">
+								25.03.2015
+							</div>
+							<div class="nextrace-subtitle">
+								BRATISLAVA CITY DOWNHILL
+							</div>
+							<div class="nextrace-abstract">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. In maxime animi quae, earum aperiam numquam enim nobis obcaecati provident perspiciatis. Illum totam, ducimus laboriosam iure esse. Nostrum fugiat ipsa fugit.
+							</div>
+							<div class="nextrace-text">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam perspiciatis repudiandae enim at voluptas beatae soluta corrupti veritatis laboriosam id nihil dolor doloribus, quaerat consequuntur dolorem eveniet. Porro, nesciunt animi!
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, quae. Voluptas consectetur quam, veniam ex obcaecati doloremque, minus expedita architecto ab ipsum. Fugit inventore architecto dolor at voluptatem, tenetur incidunt.
+							</div>
+							<div class="nextrace-share">
+								<ul class="nextrace-social">
+									<li>SHARE <i class="fa fa-share-square-o fa-2x"></i></li>
+									<li><i class="fa fa-facebook"></i></li>
+									<li><i class="fa fa-twitter"></i></li>
+									<li><i class="fa fa-google-plus"></i></li>
+									<li><i class="fa fa-linkedin"></i></li>
+								</ul>
+							</div>
+						</div>
+						<div class="nextrace-container right">
+							<img class="nextrace-img" src="../client/img/nextrace-logo.png" height="382" width="568" alt="">
+						</div>
+					</div>
+				</div>
+				<div id="portal-content-riderszone">
+					<div class="portal-content-riderszone-container">
+						<h1 class="portal-content-title black">
+							RIDERS ZONE
+							<hr width="30%">
+						</h1>
+						<div class="riderszone-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, molestias nisi fugit, aliquam quaerat, delectus ullam magnam, enim laboriosam eum pariatur! At consequuntur quia officiis similique.</div>
+						<div class="riderszone-slider">
+							<div class="riderszone-slider-item">
+								<div class="riderszone-slider-item-image">
+									<img src="" alt="">
+									<ul class="riderszone-social">
+										<li><i class="fa fa-facebook"></i></li>
+										<li><i class="fa fa-twitter"></i></li>
+										<li><i class="fa fa-linkedin"></i></li>
+									</ul>
+								</div>
+								<div class="riderszone-slider-item-rider">
+									<div class="rider-title">
+										Filip Polc
+									</div>
+									<div class="rider-text">
+										World city downhill champion
+									</div>
+								</div>
+							</div>
+							<div class="riderszone-slider-item">
+								<div class="riderszone-slider-item-image">
+									<img src="" alt="">
+									<ul class="riderszone-social">
+										<li><i class="fa fa-facebook"></i></li>
+										<li><i class="fa fa-twitter"></i></li>
+										<li><i class="fa fa-linkedin"></i></li>
+									</ul>
+								</div>
+								<div class="riderszone-slider-item-rider">
+									<div class="rider-title">
+										Jessica Christopher
+									</div>
+									<div class="rider-text">
+										Developer
+									</div>
+								</div>
+							</div>
+							<div class="riderszone-slider-item">
+								<div class="riderszone-slider-item-image">
+									<img src="" alt="">
+									<ul class="riderszone-social">
+										<li><i class="fa fa-facebook"></i></li>
+										<li><i class="fa fa-twitter"></i></li>
+										<li><i class="fa fa-linkedin"></i></li>
+									</ul>
+								</div>
+								<div class="riderszone-slider-item-rider">
+									<div class="rider-title">
+										Robert Thomas
+									</div>
+									<div class="rider-text">
+										Marketing
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="portal-content-actual-ranking">
+					<div class="portal-content-actual-ranking-container">
+						<h1 class="portal-content-title black">
+							ACTUAL RANKING
+							<hr width="30%">
+						</h1>
+						<div class="actual-ranking-riders-list">
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									1. Filip Polc
+								</div>
+								<div class="rider-country">
+									(SVK)
+								</div>
+								<div class="rider-points">
+									55 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									2. Marcelo Gutiérrez
+								</div>
+								<div class="rider-country">
+									(COL)
+								</div>
+								<div class="rider-points">
+									50 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									3. Tomáš Slavík
+								</div>
+								<div class="rider-country">
+									(CZE)
+								</div>
+								<div class="rider-points">
+									48 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									4. Michael Hannah
+								</div>
+								<div class="rider-country">
+									(AUS)
+								</div>
+								<div class="rider-points">
+									42 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									5. Bernardo Cruz
+								</div>
+								<div class="rider-country">
+									(BRA)
+								</div>
+								<div class="rider-points">
+									38 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									6. Johannes Fischbachn
+								</div>
+								<div class="rider-country">
+									(GER)
+								</div>
+								<div class="rider-points">
+									30 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									7. Guillaume Cauvin
+								</div>
+								<div class="rider-country">
+									(FRA)
+								</div>
+								<div class="rider-points">
+									26 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+							<div class="actual-ranking-riders-items">
+								<div class="rider-name">
+									8. Mark Wallace
+								</div>
+								<div class="rider-country">
+									(CAN)
+								</div>
+								<div class="rider-points">
+									20 points
+								</div>
+								<div class="rider-graph">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="portal-content-media-zone">
+					<div class="portal-content-media-zone-container">
+						<h1 class="portal-content-title black">
+							MEDIA ZONE
+							<hr width="30%">
+						</h1>
+						<div class="media-zone-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, molestias nisi fugit, aliquam quaerat, delectus ullam magnam, enim laboriosam eum pariatur! At consequuntur quia officiis similique.</div>
+						<div class="media-zone-items-container">
+							<div class="media-zone-item">
+								<div class="media-zone-item-image">
+									<img src="" alt="">
+								</div>
+								<h1>
+									NEWS
+								</h1>
+								<hr width="20%">
+								<hr width="20%">
+								<p>
+									Lorem Ipsum is simply dummy text of theprinting and typesetting it has the randomised wordswhich standard .
+								</p>
+							</div>
+							<div class="media-zone-item">
+								<div class="media-zone-item-image">
+									<img src="" alt="">
+								</div>
+								<h1>
+									PHOTO
+								</h1>
+								<hr width="20%">
+								<hr width="20%">
+								<p>
+									Lorem Ipsum is simply dummy text of theprinting and typesetting it has the randomised wordswhich standard .
+								</p>
+							</div>
+							<div class="media-zone-item">
+								<div class="media-zone-item-image">
+									<img src="" alt="">
+								</div>
+								<h1>
+									VIDEO
+								</h1>
+								<hr width="20%">
+								<hr width="20%">
+								<p>
+									Lorem Ipsum is simply dummy text of theprinting and typesetting it has the randomised wordswhich standard .
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="portal-content-subscribe">
+					<div class="portal-content-subscribe-container">
+						<h1 class="portal-content-subscribe-title">
+							<i class="fa fa-envelope"></i>
+							SUBSCRIBE
+						</h1>
+						<div class="subscribe-container">
+							<input type="subscribe" placeholder="Enter Your Email">
+							<button type="button">SUBSCRIBE</button>
+						</div>
+					</div>
+				</div>
+				<div id="portal-content-partners">
+					<div class="portal-content-partners-container">
+						<h1 class="portal-content-title black">
+							PARTNERS
+							<hr width="30%">
+						</h1>
+						<div class="partners-items-container">
+							<div class="partners-item"><img src="../client/img/google.png" height="39" width="114" alt=""></div>
+							<div class="partners-item"><img src="../client/img/yahoo.png" height="24" width="128" alt=""></div>
+							<div class="partners-item"><img src="../client/img/twitter.png" height="24" width="128" alt=""></div>
+							<div class="partners-item"><img src="../client/img/pinterest.png" height="31" width="117" alt=""></div>
+							<div class="partners-item"><img src="../client/img/facebook.png" height="31" width="117" alt=""></div>
+							<div class="partners-item"><img src="../client/img/vimeo.png" height="40" width="107" alt=""></div>
+						</div>
+					</div>
+				</div>
+				<div id="portal-content-shop">
+					<div class="portal-content-shop-container">
+						<div class="shop-items-container">
+							<img src="../client/img/shop.png" height="364" width="1140" alt="">
+						</div>
+					</div>
+				</div>
+				<div id="portal-content-contact">
+					<div class="portal-content-contact-container">
+						<h1 class="portal-content-title white">
+							CONTACT
+							<hr width="30%">
+						</h1>
+						<div class="contact-items-container">
+							<span>Address: No.28 - 63739 street lorem ipsum City, Country</span>
+							<span>Phone: <a href="tel:+123456789">+123456789</a></span>
+							<span>Email: <a href="mailto:support@yoursite.com">support@yoursite.com</a></span>
+						</div>
+						<div class="contact-social-container">
+							<ul class="social-bar">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-skype"></i></a></li>
+							</ul>
+							<div class="contact-links">
+								<a href="">About</a>
+								<a href="">FAQ</a>
+								<a href="">Contact</a>
+							</div>
+							<div class="contact-emailme">
+								<input type="text" placeholder="E-mail address">
+								<button>Go</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div id="footer-container">
-		<div id="portal-club-logos-panel-container">
-			<div id="portal-club-logos-panel">
-				<div class="portal-club-logo portal-club-logo-1" data-url="http://www.mhk.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-2" data-url="http://www.sskpresov.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-3" data-url="http://www.sporta.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-4" data-url="http://www.tjstart.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-5" data-url="http://www.hkslavia.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-6" data-url="http://www.salahandball.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-7" data-url="http://www.hkmsalahandball.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-8" data-url="http://www.hoslovanmodra.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-9" data-url="http://www.hadzanamartin.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-10" data-url="http://www.skpbratislava.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-11" data-url="http://www.iuventa-zhk.chemkostavarena.sk/?stranka=portal_marmasoft"></div>
-				<div class="portal-club-logo portal-club-logo-12" data-url="http://www.hadzanamartin.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-13" data-url="http://www.msk.sk/"></div>
-				<div class="portal-club-logo portal-club-logo-14" data-url="http://www.tatranpresov.sk/"></div>
-			</div>
-		</div>
-		<div>
-			<div id="portal-menu-bottom-container">
-				{% block menu %}
-					<div id="portal-menu-bottom-panel">
-						<div class="portal-menu-bottom-entry">
-							<img class="portal-logo" src="/portal/img/portal-logo.png" width="87px" height="50px" alt="logo" title="SLOVENSKÝ ZVÄZ HÁDZANEJ" />
-						</div>
-						{%for k in menu %}
-							<div class="portal-menu-bottom-entry">
-								<a class="portal-menu-bottom-entry-head" href="/article/{{k.aid}}">{{k.name}}</a>
-								<div class="portal-bottom-sub-menu">
-									{% for s in k.subElements %}
-										<div><a href="/article/{{s.aid}}">{{s.name}}</a></div>
-									{% endfor %}
-								</div>
-							</div>
-						{% endfor %}
-					</div>
-				{% endblock menu %}
-			</div>
-		</div>
 		<header id="main-footer">
-			Copyright &copy; 2015 SZH - Slovenský zväz hádzanej<br/>
-			Všetky práva vyhradené<br/>
-			<a href="#">Kontakt</a> / <a href="">Pomoc</a> / <a href="">FAQ</a>
+			Copyright &copy; 2015 City Downhill
 		</header>
+	</div>
+	<div class="scroll-top-wrapper ">
+		<span class="scroll-top-inner">
+			<i class="fa fa-2x fa-angle-up"></i>
+		</span>
 	</div>
 </body>
 <script>
+	// scroll to top button Show and Hide the Button
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+
+	// Scroll to Top
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+
 	$(function() {
 		$('.portal-club-logo').click(function () {
 			window.open($(this).data('url'), '_blank');
@@ -176,6 +567,7 @@
 			$('#portal-menu-panel-container').removeClass('mobile-visible');
 			mainMenuHidden = true;
 		});
+		// SHOWCASE
 		$('.x-portal-widget-showcase-view').each(function() {
 			$(this).bind('showcase-next', function() {
 				var idx = $(this).data('showcase-current') || 0;
@@ -238,6 +630,76 @@
 			showcaseEl.find('article').eq(idx).fadeOut();
 			idx = (idx+1) % $('.x-portal-widget-showcase-view article').size();
 			showcaseEl.data('showcase-current', idx);
+			showcaseEl.find('article').eq(idx).fadeIn();
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+
+		// SHOWCASEVIDEO
+		$('.x-portal-widget-showcasevideo-view').each(function() {
+			$(this).bind('showcasevideo-next', function() {
+				var idx = $(this).data('showcasevideo-current') || 0;
+
+				$(this).find('article').eq(idx).fadeOut();
+
+				if (idx == $(this).find('article').length - 1) {
+					idx = 0;
+				} else {
+					++idx;
+				}
+
+				$(this).find('article').eq(idx).fadeIn();
+
+				$(this).data('showcasevideo-current', idx);
+
+				var navigationEl = $(this).next();
+				navigationEl.find('a.item').removeClass('active');
+				navigationEl.find('a.item').eq(idx).addClass('active');
+
+				setTimeout(function() {
+					$('.x-portal-widget-showcasevideo-view').triggerHandler('showcasevideo-next');
+				}, 4000);
+			});
+
+		}).triggerHandler('showcasevideo-next');
+		$('.x-portal-widget-showcasevideo-navigation a.prev').click(function(e) {
+			var showcaseEl = $(this).parent().prev();
+			var navigationEl = $(this).parent();
+			var idx = showcaseEl.data('showcasevideo-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = idx - 1;
+			if (idx < 0) {
+				idx = $('.x-portal-widget-showcasevideo-view article').size()-1;
+			}
+			showcaseEl.find('article').eq(idx).fadeIn();
+			showcaseEl.data('showcasevideo-current', idx);
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+		$('.x-portal-widget-showcasevideo-navigation a.item').click(function(e) {
+			var showcaseEl = $(this).parents('.x-portal-widget-showcasevideo-navigation').prev();
+			var navigationEl = $(this).parents('.x-portal-widget-showcasevideo-navigation');
+			var idx = showcaseEl.data('showcasevideo-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = $(this).index();
+			showcaseEl.find('article').eq(idx).fadeIn();
+			showcaseEl.data('showcasevideo-current', idx);
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+		$('.x-portal-widget-showcasevideo-navigation a.next').click(function(e) {
+			var showcaseEl = $(this).parent().prev();
+			var navigationEl = $(this).parent();
+			var idx = showcaseEl.data('showcasevideo-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = (idx+1) % $('.x-portal-widget-showcasevideo-view article').size();
+			showcaseEl.data('showcasevideo-current', idx);
 			showcaseEl.find('article').eq(idx).fadeIn();
 			navigationEl.find('a.item').removeClass('active');
 			navigationEl.find('a.item').eq(idx).addClass('active');
@@ -490,5 +952,6 @@
 			window.location.pathname = pathParts.join('/');
 		}
 	}
+
 </script>
 </html>

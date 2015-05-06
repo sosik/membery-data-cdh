@@ -289,8 +289,8 @@
 			}
 		},
 		"peopleRegistration": {
-			"extends": "uri://registries/people#models/person",
-			"title": "Registracia osoby",
+			"extends": "uri://registries/people#models/fullperson-km",
+			"title": "Registrácia osoby",
 			"xxtransCode": "schema.people.title",
 			"table": "requisitions",
 			"security": {
@@ -672,7 +672,7 @@
 			}
 		},
 		"peopleRegistrationSolver": {
-			"extends": "uri://registries/requisitions#models/peopleRegistration",
+			"extends": "uri://registries/requisitions#views/peopleRegistrationApplicant",
 			"new": null,
 			"view": {
 				"properties": {
@@ -718,13 +718,6 @@
 				"extends": "uri://registries/requisitions#models/dataChange-km",
 				"properties": {
 					"requisitionData": null,
-					"peopleObjLink": {
-						"properties": {
-							"people": {
-								"required": true
-							}
-						}
-					},
 					"baseData": {
 						"properties": {
 							"titleBefore": null,
@@ -764,7 +757,14 @@
 						}
 					},
 					"contactInfo": null,
-					"otherInfo": null
+					"otherInfo": null,
+					"peopleObjLink": {
+						"properties": {
+							"people": {
+								"required": true
+							}
+						}
+					}
 				}
 			},
 			"search": {
@@ -812,7 +812,7 @@
 			}
 		},
 		"dataChangeSolver": {
-			"extends": "uri://registries/requisitions#models/dataChange-km",
+			"extends": "uri://registries/requisitions#views/dataChangeApplicant",
 			"new": null,
 			"view": {
 				"properties": {
@@ -928,7 +928,7 @@
 			}
 		},
 		"transferSolver": {
-			"extends": "uri://registries/requisitions#models/transfer",
+			"extends": "uri://registries/requisitions#views/transferApplicant",
 			"new": null,
 			"view": {
 				"properties": {
