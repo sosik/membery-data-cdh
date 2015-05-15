@@ -59,7 +59,7 @@
 			<div id="portal-content-bg">
 				<div id="portal-main-content">
 					{% for widget in article.data %}
-						<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }}">
+						<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }} {{ widget.css.cssClass }}">
 							{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
 							{% include templatePath with widget only %}
 						</article>
