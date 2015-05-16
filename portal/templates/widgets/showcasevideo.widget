@@ -11,6 +11,12 @@
 
 				<div class="showcasevideo-video">
 					<iframe width="696" height="410" src="{{ article.video.src|safe }}" frameborder="0" allowfullscreen></iframe>
+					<div class="x-portal-widget-showcase-navigation">
+						<a href="#" class="prev">
+						</a>
+						<a href="#" class="next">
+						</a>
+					</div>
 				</div>
 			{% endif %}
 		</article>
