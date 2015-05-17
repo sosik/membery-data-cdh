@@ -1,20 +1,18 @@
+<div class="portal-content-title">
+	<hr width="30%">
+</div>
+
 {% spaceless %}
-<div id="portal-content-actual-ranking">
-	<div class="portal-content-actual-ranking-container">
-		<h1 class="portal-content-title black">
-			ACTUAL RANKING
-			<hr width="30%">
-		</h1>
-		{% set resultIndex = 1 %}
-		{% for result in data.results %}
-			<div class="actual-ranking-riders-items">
-				<div class="rider-name">{{resultIndex}}. {{result.name}}</div>
-				<div class="rider-country">({{result.country}})</div>
-				<div class="rider-points">({{result.points}})</div>
-				<div class="rider-graph" style="background: #b62480; width: {{result.percent}}%; "></div>
-			</div>
-			{% set resultIndex = resultIndex + 1 %}
-		{% endfor %}
-	</div>
+<div class="portal-content-actual-ranking">
+	{% set resultIndex = 1 %}
+	{% for result in data.results %}
+		<div class="actual-ranking-riders-items">
+			<div class="rider-name">{{resultIndex}}. {{result.name}}</div>
+			<div class="rider-country">({{result.country}})</div>
+			<div class="rider-points">({{result.points}})</div>
+			<div class="rider-graph" style="background: #ffd1ee; width: {{result.percent}}%; "></div>
+		</div>
+		{% set resultIndex = resultIndex + 1 %}
+	{% endfor %}
 </div>
 {% endspaceless %}
