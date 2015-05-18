@@ -1,22 +1,44 @@
 <div class="portal-content-title">
-	<hr width="30%">
+
 </div>
 
 <div class="x-portal-widget-showcase-view">{% for article in data.articles %}
 	<article class="showcase-item-{{ article.id }}">
+	{% if article.img1170.img %}
+		<div class="border">
+			<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img1170.img|safe }}'); background-size: cover; background-repeat: no-repeat;">
+
+				<div class="x-portal-widget-showcase-view-textblock">
+					<a href="/article/{{ article.id }}">{{ article.title|safe }}</a>
+					<div class="abstract">{{ article.abstract|safe }}</div>
+					{{ article.content|safe }}
+					<a href="/article/{{ article.id }}">Read more ..</a>
+				</div>
+
+				<div class="x-portal-widget-showcase-transparent">
+					<img src="./portal/img/transparent-logo.png">
+				</div>
+			</div>
+		</div>
+	{% endif %}
 	{% if article.img.img %}
-	<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img.img|safe }}'); background-size: cover; background-repeat: no-repeat;">
+		<div class="border">
 
-		<div class="x-portal-widget-showcase-view-textblock">
-			<a href="/article/{{ article.id }}">{{ article.title|safe }}</a>
-			{{ article.abstract|safe }}
-			{{ article.contentBlock|safe }}
-		</div>
+			<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img.img|safe }}'); background-size: cover; background-repeat: no-repeat;">
 
-		<div class="x-portal-widget-showcase-transparent">
-			<img src="./portal/img/transparent-logo.png">
+				<div class="x-portal-widget-showcase-view-textblock">
+					<a href="/article/{{ article.id }}">{{ article.title|safe }}</a>
+					<div class="abstract">{{ article.abstract|safe }}</div>
+					{{ article.content|safe }}
+					<a href="/article/{{ article.id }}">Read more ..</a>
+				</div>
+
+				<div class="x-portal-widget-showcase-transparent">
+					<img src="./portal/img/transparent-logo.png">
+				</div>
+			</div>
 		</div>
-	</div>{% endif %}
+	{% endif %}
 	
 	</article>
 	{% endfor %}
