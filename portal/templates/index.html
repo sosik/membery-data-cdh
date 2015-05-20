@@ -21,6 +21,7 @@
 </head>
 
 <body>
+	<a name="top"></a>
 	<div id="portal-main-container">
 		<div id="portal-header-container">
 			<header id="portal-main-header">
@@ -46,7 +47,7 @@
 						<ul id="portal-menu-panel">
 							{%for k in menu %}
 								<li class="portal-menu-entry">
-									<a href="{% if k.tags && k.tags.length > 0 %}/article/{{k.aid}}{% endif %}{% if k.hash %}#portal-content{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
+									<a href="{% if k.tags && k.tags.length > 0 %}/article/{{k.aid}}{% endif %}{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
 								</li>
 							{% endfor %}
 						</ul>
@@ -58,6 +59,7 @@
 		<div id="portal-content-container">
 			<div id="portal-main-content">
 				{% for widget in article.data %}
+					<a name="{{ widget.css.cssClass }}" ></a>
 					<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }} {{ widget.css.cssClass }}">
 						{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
 						{% include templatePath with widget only %}
