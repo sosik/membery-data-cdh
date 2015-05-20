@@ -16,13 +16,19 @@
 				</div>
 
 				<div class="x-portal-widget-showcase-transparent">
-					<img src="./portal/img/transparent-logo.png">
+					<img src="/portal/img/transparent-logo.png">
 				</div>
 			</div>
 		</div>
 	{% endif %}
 	{% if article.img.img %}
 		<div class="border">
+			<div class="x-portal-widget-showcase-diamond">
+				<div class="x-portal-widget-showcase-diamond-inner">
+					<!--img src="{{ article.img.img|safe }}"/-->
+				</div>
+			</div>
+			<div class="only-location" style="background: url('{{ article.img.img|safe }}'); background-size: contain; background-repeat: no-repeat; background-position: 50% 50%; width: 80px; height: 100px; position: absolute; top: 8px; left: 88px;"></div>
 
 			<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img.img|safe }}'); background-size: cover; background-repeat: no-repeat;">
 
@@ -34,7 +40,7 @@
 				</div>
 
 				<div class="x-portal-widget-showcase-transparent">
-					<img src="./portal/img/transparent-logo.png">
+					<img src="/portal/img/transparent-logo.png">
 				</div>
 			</div>
 		</div>
