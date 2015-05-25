@@ -204,7 +204,8 @@ input{
 }
 
 .portal-menu-entry a:hover,
-.portal-menu-entry a:focus{
+.portal-menu-entry a:focus {
+	text-decoration: none;
 	color: #906;
 	border-bottom: 2px solid #906;
 }
@@ -258,6 +259,7 @@ a.portal-menu-bottom-entry-head {
 	margin: 0 auto;
 	display: table;
 	background: black;
+	clear: both;
 }
 
 #portal-main-content {
