@@ -462,7 +462,7 @@ a.portal-menu-bottom-entry-head {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
 	font-size: 24px;
-	color: #b62480;
+	color: #b62480 !important;
 	text-align: center;
 	margin: 30px 0 0 0;
 }
@@ -2053,4 +2053,50 @@ div.slider-item-image{
 
 .portal-content-riderszone {
 	display: none
+}
+
+.x-portal-widget-showcase-textblock {
+	background: transparent;
+}
+
+.portal-content-location .x-portal-widget-showcase-image {
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: contain !important;
+	width: 80px !important;
+	height: 100px !important;
+	position: absolute;
+	top: 25px;
+	left: 50px;
+}
+
+.portal-content-location article {
+  width: 20%;
+  height: 300px;
+  float: left;
+  margin-left: 2.307%;
+  position: relative;
+  margin-top: 90px;
+}
+
+.portal-content-nextrace .x-portal-widget-showcase-image {
+	background-repeat: no-repeat;
+	background-size: contain !important;
+	border: 15px solid white;
+	height: 382px !important;
+	width: 568px !important;
+	float: right;
+	margin-top: 100px;
+	margin-right: 10px;
+	position: relative;
+}
+
+.portal-content-nextrace .x-portal-widget-showcase-textblock {
+	width: 350px;
+}
+
+.portal-article-ranking {
+	padding-top: 24px;
+	padding-left: 100px;
+	padding-right: 100px;
 }
