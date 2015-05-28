@@ -315,8 +315,14 @@
 						SUBSCRIBE
 					</h1>
 					<div class="subscribe-container">
-						<input type="subscribe" placeholder="Enter Your Email">
-						<button type="button">SUBSCRIBE</button>
+						<input type="subscribe" class="subscribe-input" placeholder="Enter Your Email">
+						<button type="button" class="subscribe-button">SUBSCRIBE</button>
+					</div>
+					<div class="subscribe-message">
+						Your email was subscribed.
+					</div>
+					<div class="subscribe-error">
+						Failed to subscribe.
 					</div>
 				</div>
 			</div>
@@ -425,6 +431,34 @@
 	}
 
 	$(function() {
+		$('.subscribe-message').hide();
+		$('.subscribe-error').hide();
+		$('.subscribe-button').click(function () {
+
+			var email = $('.subscribe-input').val();
+			var url = '/schema/uri~3A~2F~2Fregistries~2FsubscribedEmails~23views~2FsubscribedEmails~2Fnew';
+			var data = JSON.stringify({"subscribedEmails":{"email": email }});
+
+			$.ajax({
+				url: url,
+				type: 'PUT',
+				data: '{ "subscribedEmails": { "email": "' + email + '" } }',
+				contentType: "application/json",
+				success: function (result) {
+					if (result) {
+						$('.subscribe-container').hide();
+						$('.subscribe-message').show();
+					}
+				},
+				error: function (err) {
+					if (err) {
+						$('.subscribe-container').hide();
+						$('.subscribe-error').show();
+					}
+				}
+			});
+
+		});
 		$('.portal-club-logo').click(function () {
 			window.open($(this).data('url'), '_blank');
 		});

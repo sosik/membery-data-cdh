@@ -22,5 +22,6 @@
 	"nomination.json",
 	"commonTypes.json",
 	"commonEnums.json",
-	"requisitions.json"
+	"requisitions.json",
+	"subscribedEmails.json"
 ]

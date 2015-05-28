@@ -417,6 +417,12 @@
 		"schema.requisitions.basedata.responsetext":"Odpoveď",
 		"schema.requisitions.basedata.modifiedOn":"Čas poslednej zmeny",
 
+		"menu.subscribedEmails.title": "Prihlasovanie na odber",
+		"schema.subscribedEmails.title": "Prihlasovanie na odber",
+		"schema.subscribedEmails.email": "Email",
+		"schema.subscribedEmails.lastModification": "D. vytvorenia",
+		"schema.baseData": "Základné údaje",
+
 		"schema.statistics.view":"Štatistiky",
 		"schema.statistics.baseData":"Základné",
 		"schema.statistics.member.count":"Počet členov",
@@ -840,7 +846,13 @@
 		"schema.requisitions.basedata.status.closed":"Uzavretá",
 		"schema.requisitions.attachments":"Přílohy",
 		"schema.requisitions.basedata.responsetext":"Odpověď",
-		"schema.requisitions.basedata.modifiedOn":"Čas poslednej zmeny"
+		"schema.requisitions.basedata.modifiedOn":"Čas poslednej zmeny",
+
+		"menu.subscribedEmails.title": "Přihlášení k odběru",
+		"schema.subscribedEmails.title": "Přihlášení k odběru",
+		"schema.subscribedEmails.email": "Email",
+		"schema.subscribedEmails.lastModification": "D. vytvoření",
+		"schema.baseData": "Základní údaje"
 	});
 }]);
 }(angular));
