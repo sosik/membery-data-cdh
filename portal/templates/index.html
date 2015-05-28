@@ -47,7 +47,7 @@
 						<ul id="portal-menu-panel">
 							{%for k in menu %}
 								<li class="portal-menu-entry">
-									<a href="{% if k.tags && k.tags.length > 0 %}/article/{{k.aid}}{% endif %}{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
+									<a href="{% if k.tags && k.tags.length > 0 && k.aid %}/article/{{k.aid}}{% endif %}{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
 								</li>
 							{% endfor %}
 						</ul>
