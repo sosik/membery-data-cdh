@@ -2127,3 +2127,12 @@ div.slider-item-image{
 .subscribe-message {
 	margin-left: 21.025%;
 }
+
+.portal-content-location .portal-article-decorator {
+	position: absolute;
+	height: 370px;
+	width: 100%;
+	border: 1px solid gray;
+	top: -30px;
+	left: 0px;
+}

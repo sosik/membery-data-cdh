@@ -45,6 +45,7 @@
 			</div>
 		</div>
 	{% endif %}
+		<div class="portal-article-decorator"></div>
 	
 	</article>
 	{% endfor %}
