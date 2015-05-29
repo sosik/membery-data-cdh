@@ -4,6 +4,7 @@
 
 <div class="x-portal-widget-showcase-view">{% for article in data.articles %}
 	<article class="showcase-item-{{ article.id }}">
+		<div class="portal-article-decorator"></div>
 	{% if article.img1170.img %}
 		<div class="border">
 			<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img1170.img|safe }}'); background-size: cover; background-repeat: no-repeat;">
@@ -45,7 +46,6 @@
 			</div>
 		</div>
 	{% endif %}
-		<div class="portal-article-decorator"></div>
 	
 	</article>
 	{% endfor %}

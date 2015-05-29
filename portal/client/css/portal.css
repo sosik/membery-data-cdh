@@ -431,20 +431,20 @@ a.portal-menu-bottom-entry-head {
 
 .x-portal-widget-showcase-diamond {
   margin: 0 auto;
-  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
   overflow: hidden;
   width: 100px;
   height: 100px;
 }
 
 .x-portal-widget-showcase-diamond {
-  transform: rotate(45deg) translateY(10px);
+  -webkit-transform: rotate(45deg) translateY(10px);
 }
 
 .x-portal-widget-showcase-diamond-inner {
   width: 200px;
   height: 200px;
-  transform: rotate(-45deg) translateY(-74px);
+  -webkit-transform: rotate(-45deg) translateY(-74px);
   background: white;
 }
 
