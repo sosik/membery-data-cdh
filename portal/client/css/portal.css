@@ -386,9 +386,14 @@ a.portal-menu-bottom-entry-head {
 	color: white;
 }
 
-.portal-content-location .x-portal-widget-showcase-view{
-	max-width: 1170px;
+.portal-content-location .x-portal-widget-showcase-view {
+	width: 1170px;
 	margin: 0 auto;
+	overflow: hidden;
+}
+
+.portal-content-location .x-portal-widget-showcase-view-inner {
+	width: 30000px;
 }
 
 .portal-content-location .x-portal-widget-showcase-transparent{
@@ -502,16 +507,52 @@ a.portal-menu-bottom-entry-head {
 }
 
 .portal-content-location .x-portal-widget-showcase-view article{
-	width: 23.07%;
+	width: 260px;
 	height: 300px;
-	float: left;
-	margin-left: 2.307%;
+	margin-left: 30px;
 	position: relative;
 	margin-top: 90px;
 }
 
-.portal-content-location .x-portal-widget-showcase-view article:first-child{
-	margin-left: 0;
+.portal-content-location .x-portal-widget-showcase-navigation {
+	width: 1170px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.x-portal-widget-showcase-navigation .fa-arrow-circle-o-left,
+	.x-portal-widget-showcase-navigation .fa-arrow-circle-o-right {
+	display: none;
+}
+
+.portal-content-location .x-portal-widget-showcase-navigation .fa-arrow-circle-o-left,
+	.portal-content-location .x-portal-widget-showcase-navigation .fa-arrow-circle-o-right {
+	display: inline;
+}
+
+.portal-content-location .x-portal-widget-showcase-navigation .prev {
+	/*background: url('/client/img/locations-back.png');*/
+	color: #b9b9b9;
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top: -255px;
+	left: -20px;
+}
+
+.portal-content-location .x-portal-widget-showcase-navigation .next {
+	/*background: url('/client/img/locations-forward.png');*/
+	color: #b9b9b9;
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top: -255px;
+	right: -40px;
+}
+
+.portal-content-location .x-portal-widget-showcase-navigation .prev:hover,
+		.portal-content-location .x-portal-widget-showcase-navigation .next:hover {
+	color: black;
 }
 
 /*TODO vymazat*/
@@ -2298,9 +2339,9 @@ div.slider-item-image{
 
 .portal-content-location .portal-article-decorator {
 	position: absolute;
-	height: 370px;
+	height: 283px;
 	width: 100%;
-	border: 1px solid gray;
-	top: -30px;
+	border: 1px solid #b9b9b9;
+	top: 57px;
 	left: 0px;
 }
