@@ -808,5 +808,42 @@
 		});
 	});
 
+	$(function(){
+		var totalItemCount = $('.portal-content-riderszone .showcase-item').size();
+		var visibleNumber = 3;
+		var marginLeft = 0;
+		var itemPos = 0;
+
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .next').unbind('click');
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .prev').unbind('click');
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .next').click(function (ev) {
+			itemPos++;
+			if (itemPos+(visibleNumber-1) < totalItemCount) {
+				marginLeft = marginLeft - 300;
+			} else {
+				itemPos = (totalItemCount-1)-(visibleNumber-1);
+				marginLeft = -300 * itemPos;
+			}
+			$('.portal-content-riderszone .x-portal-widget-showcase-view-inner').animate({
+                marginLeft: marginLeft }, 500);
+
+			ev.stopPropagation();
+			return false;
+		});
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .prev').click(function (ev) {
+			itemPos--;
+			if (itemPos >= 0) {
+				marginLeft = marginLeft + 300;
+			} else {
+				marginLeft = 0;
+				itemPos = 0;
+			}
+			$('.portal-content-riderszone .x-portal-widget-showcase-view-inner').animate({
+                marginLeft: marginLeft }, 500);
+
+			ev.stopPropagation();
+			return false;
+		});
+	});
 </script>
 </html>

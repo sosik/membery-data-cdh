@@ -386,13 +386,19 @@ a.portal-menu-bottom-entry-head {
 	color: white;
 }
 
-.portal-content-location .x-portal-widget-showcase-view {
+.portal-content-location .x-portal-widget-showcase-view,
+		.portal-content-riderszone .x-portal-widget-showcase-view {
 	width: 1170px;
 	margin: 0 auto;
 	overflow: hidden;
 }
 
-.portal-content-location .x-portal-widget-showcase-view-inner {
+.portal-content-riderszone .x-portal-widget-showcase-view {
+	height: 450px;
+}
+
+.portal-content-location .x-portal-widget-showcase-view-inner,
+		.portal-content-riderszone .x-portal-widget-showcase-view-inner {
 	width: 30000px;
 }
 
@@ -460,7 +466,8 @@ a.portal-menu-bottom-entry-head {
   height: auto;
 }
 
-.portal-content-location .x-portal-widget-showcase-view .x-portal-widget-showcase-view-image {
+.portal-content-location .x-portal-widget-showcase-view .x-portal-widget-showcase-view-image,
+		.portal-content-riderszone .x-portal-widget-showcase-view .x-portal-widget-showcase-view-image {
 	background: none !important;
 	border: none;
 }
@@ -514,7 +521,8 @@ a.portal-menu-bottom-entry-head {
 	margin-top: 90px;
 }
 
-.portal-content-location .x-portal-widget-showcase-navigation {
+.portal-content-location .x-portal-widget-showcase-navigation,
+		.portal-content-riderszone .x-portal-widget-showcase-navigation {
 	width: 1170px;
 	margin: 0 auto;
 	position: relative;
@@ -526,11 +534,14 @@ a.portal-menu-bottom-entry-head {
 }
 
 .portal-content-location .x-portal-widget-showcase-navigation .fa-arrow-circle-o-left,
-	.portal-content-location .x-portal-widget-showcase-navigation .fa-arrow-circle-o-right {
+		.portal-content-location .x-portal-widget-showcase-navigation .fa-arrow-circle-o-right,
+		.portal-content-riderszone .x-portal-widget-showcase-navigation .fa-arrow-circle-o-left,
+		.portal-content-riderszone .x-portal-widget-showcase-navigation .fa-arrow-circle-o-right {
 	display: inline;
 }
 
-.portal-content-location .x-portal-widget-showcase-navigation .prev {
+.portal-content-location .x-portal-widget-showcase-navigation .prev,
+		.portal-content-riderszone .x-portal-widget-showcase-navigation .prev {
 	/*background: url('/client/img/locations-back.png');*/
 	color: #b9b9b9;
 	width: 32px;
@@ -540,7 +551,13 @@ a.portal-menu-bottom-entry-head {
 	left: -20px;
 }
 
-.portal-content-location .x-portal-widget-showcase-navigation .next {
+.portal-content-riderszone .x-portal-widget-showcase-navigation .prev {
+	top: -350px;
+	left: 80px;
+}
+
+.portal-content-location .x-portal-widget-showcase-navigation .next,
+		.portal-content-riderszone .x-portal-widget-showcase-navigation .next {
 	/*background: url('/client/img/locations-forward.png');*/
 	color: #b9b9b9;
 	width: 32px;
@@ -550,8 +567,16 @@ a.portal-menu-bottom-entry-head {
 	right: -40px;
 }
 
+.portal-content-riderszone .x-portal-widget-showcase-navigation .next {
+	top: -350px;
+	right: 85px;
+}
+
 .portal-content-location .x-portal-widget-showcase-navigation .prev:hover,
-		.portal-content-location .x-portal-widget-showcase-navigation .next:hover {
+		.portal-content-location .x-portal-widget-showcase-navigation .next:hover,
+		.portal-content-riderszone .x-portal-widget-showcase-navigation .prev:hover,
+		.portal-content-riderszone .x-portal-widget-showcase-navigation .next:hover
+	 {
 	color: black;
 }
 
@@ -852,17 +877,18 @@ a .slider-item-image:focus{
 }
 
 .portal-content-riderszone .x-portal-widget-showcase-view{
-	max-width: 1170px;
+	max-width: 900px;
 	margin: 0 auto;
 	margin-top: 100px;
 	text-align: center;
 	position: relative;
 }
 
-.portal-content-riderszone article{
-	width: 33.33%;
+.portal-content-riderszone article {
+	width: 300px;
 	float: left;
-	margin: 0 auto;
+	position: relative;
+	padding-top: 10px;
 }
 
 .portal-content-riderszone article .border{
@@ -870,8 +896,6 @@ a .slider-item-image:focus{
 	margin: 0 auto;
 	width: 210px;
 	height: 210px;
-	background-color: #fff;
-	border: 1px solid #b9b9b9;
 }
 
 .portal-content-riderszone .x-portal-widget-showcase-view-image{
@@ -886,9 +910,10 @@ a .slider-item-image:focus{
 	display: none;
 }
 
-.portal-content-riderszone .x-portal-widget-showcase-view-textblock{
+.portal-content-riderszone .x-portal-widget-showcase-view-textblock {
 	position: absolute;
 	top: 250px;
+	width: 200px;
 	border-top: 1px solid #a2a2a2;
 	border-top-style: double;
 	border-top-width: 4px;
@@ -2267,11 +2292,15 @@ div.slider-item-image{
 	line-height: inherit;
 }
 
-.only-location {
+.only-location, .only-riderszone {
 	display: none;
 }
 
 .portal-content-location .only-location {
+	display: block;
+}
+
+.portal-content-riderszone .only-riderszone {
 	display: block;
 }
 
