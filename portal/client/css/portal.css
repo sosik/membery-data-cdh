@@ -2334,6 +2334,10 @@ div.slider-item-image{
   margin-top: 90px;
 }
 
+.portal-content-riderszone .x-portal-widget-showcase-image {
+	display: none;
+}
+
 .portal-content-nextrace .x-portal-widget-showcase-image {
 	background-repeat: no-repeat;
 	background-size: contain !important;
@@ -2373,4 +2377,45 @@ div.slider-item-image{
 	border: 1px solid #b9b9b9;
 	top: 57px;
 	left: 0px;
+}
+
+.x-portal-widget-showcase.portal-content-location,
+		.x-portal-widget-showcase.portal-content-riderszone {
+	overflow: hidden;
+}
+
+.x-portal-widget-showcase.portal-content-location article {
+	width: 200px;
+	margin-left: 24px;
+}
+
+.x-portal-widget-showcase.portal-content-riderszone article {
+	width: 200px;
+	margin-left: 24px;
+}
+
+.x-portal-widget-showcase.portal-content-location .portal-content-container,
+		.x-portal-widget-showcase.portal-content-riderszone .portal-content-container {
+	width: 40000px;
+}
+
+.x-portal-widget-showcase.portal-content-riderszone .x-portal-widget-showcase-textblock {
+	text-align: center;
+	position: relative;
+	bottom: inherit;
+	color: inherit;
+}
+
+.portal-content-navigation {
+	display: none;
+}
+
+.x-portal-widget-showcase.portal-content-location .portal-content-navigation {
+	color: white;
+}
+
+.x-portal-widget-showcase.portal-content-location .portal-content-navigation,
+		.x-portal-widget-showcase.portal-content-riderszone .portal-content-navigation {
+	display: block;
+	clear: both;
 }
