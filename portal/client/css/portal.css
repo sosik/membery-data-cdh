@@ -312,37 +312,6 @@ a.portal-menu-bottom-entry-head {
 	height: 960px;
 }
 
-/*todo vymazat*/
-#portal-content-location{
-	background-image: url(../img/location.png) !important; 
-	background-repeat: no-repeat !important;
-    background-position: right top !important;
-	width: 100% !important;
-	height: 523px !important;
-}
-
-/*todo vymazat*/
-#portal-content-nextrace{
-	background-image: url(../img/nextrace.png);
-	width: 100%;
-	height: 705px;
-}
-
-/*todo vymazat*/
-#portal-content-riderszone{
-	background-image: url(../img/riders.png);
-	background-repeat: no-repeat;
-    background-position: right top;
-	width: 100%;
-	height: 910px;
-}
-/*todo vymazat*/
-#portal-content-actual-ranking{
-	background-image: url(../img/actual-ranking-bg.png);
-	width: 100%;
-	height: 960px;
-}
-
 #portal-content-media-zone{
 	background-color: #999;
 	width: 100%;
@@ -580,12 +549,6 @@ a.portal-menu-bottom-entry-head {
 	color: black;
 }
 
-/*TODO vymazat*/
-.portal-content-location-container{
-	max-width: 1170px;
-	margin: 0 auto;
-}
-
 .location-slider{
 	position: relative;
 	bottom: -100px;
@@ -740,12 +703,6 @@ a .slider-item-image:focus{
 
 .portal-content-nextrace .x-portal-widget-showcase-transparent{
 	display: none;
-}
-
-/*todo vymazat*/
-.portal-content-nextrace-container{
-	max-width: 1170px;
-  	margin: 0 auto;
 }
 
 .nextrace-container{
@@ -2024,6 +1981,8 @@ div.slider-item-image{
 	.portal-content-nextrace .x-portal-widget-showcase-view-textblock{
 		left: 0;
 		top: -100%;
+		max-height: 320px;
+		overflow: hidden;
 	}
 	
 	.portal-content-nextrace .border{
@@ -2152,116 +2111,7 @@ div.slider-item-image{
 		margin-right: 5px;
 	}
 
-	.showcasevideo-video iframe{
-		/*margin-left: 5px;*/
-	}
 }
-
-/*@media (max-width: 1020px) {
-	
-	#portal-main-container {
-		min-width: initial;
-		width: auto;
-	}
-
-	#portal-main-header {
-		max-width: initial;
-	}
-
-	#portal-menu-panel {
-		width: initial;
-	}
-
-	#portal-club-logos-panel {
-		width: 90%;
-	}
-
-	#portal-content-container {
-		width: auto;
-		position: relative;
-	}
-
-	#portal-main-content {
-		display: block;
-	    width: auto;
-	}
-	
-	#portal-side-content {
-	    position: absolute;
-	    top: 36px;
-	    right: 0px;
-	}
-
-	#footer-container {
-		min-width: initial;
-		width: auto;
-	}
-
-	#main-footer {
-		min-width: initial;
-	}
-
-}
-
-@media (max-width: 1020px) {
-
-	.x-portal-widget-showcase-view img {
-		width: 100%;
-	}
-
-	.portal-article {
-		width: 100%;
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-	
-	.x-portal-widget-showcase-view-textblock {
-		width: 100%;
-	}
-	
-	.x-portal-widget-showcase-view article {
-		overflow: hidden;
-		width: 100%;
-	}
-
-	#portal-club-logos-panel-container {
-		display: none;
-	}
-}
-
-
-
-@media (max-width: 400px) {
-	#portal-content-container {
-		width: auto;
-		position: static;
-	}
-
-	#portal-main-content {
-	    position: static;
-		display: block;
-	    width: auto;
-	    margin-right: 10px;
-	    margin-left: 10px;
-	}
-	
-	#portal-side-content {
-	    position: static;
-	    top: 0px;
-	    left: 0px;
-	    margin-right: 10px;
-	    margin-left: 10px;
-	}
-	
-	.x-portal-widget-match-results {
-		padding-left: 5px;
-		padding-right: 5px;
-	}
-	
-	.x-portal-widget-category article {
-		padding-left: 5px;
-	}
-}*/
 
 /*scroll to top button*/
 .scroll-top-wrapper {
@@ -2303,10 +2153,6 @@ div.slider-item-image{
 .portal-content-riderszone .only-riderszone {
 	display: block;
 }
-
-/*.portal-content-riderszone {
-	display: none
-}*/
 
 .x-portal-widget-showcase-textblock {
 	background: transparent;
