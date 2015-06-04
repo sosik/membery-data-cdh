@@ -1759,7 +1759,28 @@ div.slider-item-image{
 }
 
 .portal-content-titulka .x-portal-widget-showcase-view-textblock{
+	position: relative;
+}
+
+.portal-content-titulka .x-portal-widget-showcase-view-textblock a:nth-child(3){
 	display: none;
+}
+
+.portal-content-titulka .x-portal-widget-showcase-view-textblock h1{
+	color: #C06;
+	font-size: 29px;
+	text-align: right;
+	position: absolute;
+	bottom: -470px;
+	right: 350px;
+}
+
+.portal-content-titulka .x-portal-widget-showcase-view-textblock .abstract{
+	position: absolute;
+	font-style: normal !important;
+	text-align: right;
+	bottom: -510px;
+	right: 430px;
 }
 
 .portal-content-titulka .portal-content-title{
