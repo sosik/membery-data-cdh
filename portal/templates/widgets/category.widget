@@ -4,7 +4,7 @@
 		{% if article.img.img %}
 			<img src="{{ article.img.img|safe }}">
 		{% else %}
-			<iframe src="{{ article.video.src|safe }}" frameborder="0" allowfullscreen width="200px" height="100px"></iframe>
+			<iframe src="{{ article.video.src|safe }}" showinfo=0 controls=0 autohide=1 frameborder="0" width="200px" height="100px"></iframe>
 		{% endif %}
 		<div class="x-portal-widget-category-inner">
 			{{ article.abstract|safe }}
@@ -12,6 +12,6 @@
 	</article>
 {% endfor %}</div>
 <div style=" text-align: right; clear: both;" class="x-portal-widget-category-navigation" data-nextpage="{{data.nextPage}}">
-	<a style=" color: #CB2225; "><i class="fa fa-chevron-left x-portal-widget-category-prev-btn"></i></a>
-	&nbsp;&nbsp;<a style=" color: #CB2225; "><i class="fa fa-chevron-right x-portal-widget-category-next-btn"></i></a>
+	<a style=" color: white; "><i class="fa fa-chevron-left x-portal-widget-category-prev-btn"></i></a>
+	&nbsp;&nbsp;<a style=" color: white; "><i class="fa fa-chevron-right x-portal-widget-category-next-btn"></i></a>
 </div>
