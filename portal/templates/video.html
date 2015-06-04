@@ -69,8 +69,8 @@
 			</header>
 		</div>
 		
-		<div id="portal-content-container">
-			<div id="portal-main-content">
+		<div id="portal-content-container" style="background:white;">
+			<div id="portal-main-content-video">
 				{% for widget in article.data %}
 					<a name="{{ widget.css.cssClass }}" ></a>
 					<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }} {{ widget.css.cssClass }}">
@@ -80,44 +80,6 @@
 				{% endfor %}
 			</div>
 			
-			<div id="portal-content-subscribe">
-				<div class="portal-content-subscribe-container">
-					<h1 class="portal-content-subscribe-title">
-						<i class="fa fa-envelope"></i>
-						SUBSCRIBE
-					</h1>
-					<div class="subscribe-container">
-						<input type="subscribe" class="subscribe-input" placeholder="Enter Your Email">
-						<button type="button" class="subscribe-button">SUBSCRIBE</button>
-					</div>
-					<div class="subscribe-message">
-						Your email was subscribed.
-					</div>
-					<div class="subscribe-error">
-						Failed to subscribe.
-					</div>
-				</div>
-			</div>
-			<div id="portal-content-partners">
-				<div class="portal-content-partners-container">
-					<h1 class="portal-content-title black">
-						PARTNERS
-						<hr width="30%">
-					</h1>
-					<div class="partners-items-container">
-						<div class="partners-item"><img src="../client/img/leatt300x200.jpg" height="190" width="300" alt=""></div>
-						<div class="partners-item"><img src="../client/img/slovakia300x200.jpg" height="190" width="300" alt=""></div>
-						<div class="partners-item"><img src="../client/img/epicTV300x200.jpg" height="190" width="300" alt=""></div>
-					</div>
-				</div>
-			</div>
-			<div id="portal-content-shop">
-				<div class="portal-content-shop-container">
-					<div class="shop-items-container">
-<!-- 						<img src="../client/img/shop.png" height="364" width="1140" alt="">
- -->					</div>
-				</div>
-			</div>
 			<div id="portal-content-contact">
 				<div class="portal-content-contact-container">
 					<h1 class="portal-content-title white">
@@ -346,7 +308,7 @@
 
 				setTimeout(function() {
 					$('.x-portal-widget-showcasevideo-view').triggerHandler('showcasevideo-next');
-				}, 5000);
+				}, 4000);
 			});
 
 		}).triggerHandler('showcasevideo-next');
@@ -366,19 +328,19 @@
 			e.stopPropagation();
 			return false;
 		});
-		// $('.x-portal-widget-showcasevideo-navigation a.item').click(function(e) {
-		// 	var showcaseEl = $(this).parents('.x-portal-widget-showcasevideo-navigation').prev();
-		// 	var navigationEl = $(this).parents('.x-portal-widget-showcasevideo-navigation');
-		// 	var idx = showcaseEl.data('showcasevideo-current') || 0;
-		// 	showcaseEl.find('article').eq(idx).fadeOut();
-		// 	idx = $(this).index();
-		// 	showcaseEl.find('article').eq(idx).fadeIn();
-		// 	showcaseEl.data('showcasevideo-current', idx);
-		// 	navigationEl.find('a.item').removeClass('active');
-		// 	navigationEl.find('a.item').eq(idx).addClass('active');
-		// 	e.stopPropagation();
-		// 	return false;
-		// });
+		$('.x-portal-widget-showcasevideo-navigation a.item').click(function(e) {
+			var showcaseEl = $(this).parents('.x-portal-widget-showcasevideo-navigation').prev();
+			var navigationEl = $(this).parents('.x-portal-widget-showcasevideo-navigation');
+			var idx = showcaseEl.data('showcasevideo-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = $(this).index();
+			showcaseEl.find('article').eq(idx).fadeIn();
+			showcaseEl.data('showcasevideo-current', idx);
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
 		$('.x-portal-widget-showcasevideo-navigation a.next').click(function(e) {
 			var showcaseEl = $(this).parent().prev();
 			var navigationEl = $(this).parent();
@@ -577,7 +539,7 @@
 				marginLeft = -292 * itemPos;
 			}
 			$('.portal-content-location .x-portal-widget-showcase-view-inner').animate({
-				marginLeft: marginLeft }, 500);
+                marginLeft: marginLeft }, 500);
 
 			ev.stopPropagation();
 			return false;
@@ -591,7 +553,7 @@
 				itemPos = 0;
 			}
 			$('.portal-content-location .x-portal-widget-showcase-view-inner').animate({
-				marginLeft: marginLeft }, 500);
+                marginLeft: marginLeft }, 500);
 
 			ev.stopPropagation();
 			return false;
@@ -615,7 +577,7 @@
 				marginLeft = -300 * itemPos;
 			}
 			$('.portal-content-riderszone .x-portal-widget-showcase-view-inner').animate({
-				marginLeft: marginLeft }, 500);
+                marginLeft: marginLeft }, 500);
 
 			ev.stopPropagation();
 			return false;
@@ -629,43 +591,6 @@
 				itemPos = 0;
 			}
 			$('.portal-content-riderszone .x-portal-widget-showcase-view-inner').animate({
-				marginLeft: marginLeft }, 500);
-
-			ev.stopPropagation();
-			return false;
-		});
-	});
-
-	$(function(){
-		var totalItemCount = $('.portal-content-mediazone .showcase-item').size();
-		var marginLeft = 0;
-		var itemPos = 0;
-
-		$('.portal-content-mediazone .x-portal-widget-showcase-navigation .next').unbind('click');
-		$('.portal-content-mediazone .x-portal-widget-showcase-navigation .prev').unbind('click');
-		$('.portal-content-mediazone .x-portal-widget-showcase-navigation .next').click(function (ev) {
-			itemPos++;
-			if (itemPos+3 < totalItemCount) {
-				marginLeft = marginLeft - 292;
-			} else {
-				itemPos = (totalItemCount-1)-3;
-				marginLeft = -292 * itemPos;
-			}
-			$('.portal-content-mediazone .x-portal-widget-showcase-view-inner').animate({
-                marginLeft: marginLeft }, 500);
-
-			ev.stopPropagation();
-			return false;
-		});
-		$('.portal-content-mediazone .x-portal-widget-showcase-navigation .prev').click(function (ev) {
-			itemPos--;
-			if (itemPos >= 0) {
-				marginLeft = marginLeft + 292;
-			} else {
-				marginLeft = 0;
-				itemPos = 0;
-			}
-			$('.portal-content-mediazone .x-portal-widget-showcase-view-inner').animate({
                 marginLeft: marginLeft }, 500);
 
 			ev.stopPropagation();

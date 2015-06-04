@@ -11,16 +11,18 @@
 
 				<div class="showcasevideo-video">
 					<iframe src="{{ article.video.src|safe }}" frameborder="0" allowfullscreen></iframe>
-					<div class="x-portal-widget-showcasevideo-navigation">
-						<a href="#" class="prev">
-							<i class="fa fa-angle-left fa-2x"></i>
-						</a>
-						<a href="#" class="next">
-							<i class="fa fa-angle-right fa-2x"></i>
-						</a>
-					</div>
+					
 				</div>
 			{% endif %}
 		</article>
 	{% endfor %}
+</div>
+
+<div class="x-portal-widget-showcasevideo-navigation">
+	<a href="#" class="prev">
+		<i class="fa fa-angle-left fa-2x"></i>
+	</a>
+	<a href="#" class="next">
+		<i class="fa fa-angle-right fa-2x"></i>
+	</a>
 </div>
