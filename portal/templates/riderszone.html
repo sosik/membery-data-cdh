@@ -1,0 +1,601 @@
+<!-- frontend portal -->
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>CityDownHill</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="copyright" content="Unionsoft" />
+	<meta name="author" content="" />
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="/portal/css/standalone.css">
+	<link rel="stylesheet" type="text/css" href="/portal/css/portal.css">
+	<link rel="stylesheet" type="text/css" href="/portal/css/font-awesome.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+</head>
+
+<body>
+	<a name="top"></a>
+	<div id="portal-main-container">
+		<div id="portal-header-container">
+			<header id="portal-main-header">
+				<div id="mobile-menu-toggler">
+					<a href="" class="toogle-menu" >
+						<i class="fa fa-align-justify"></i>
+					</a>
+				</div>
+				<div class="portal-social-panel">
+					<ul>
+						<li><a href="https://instagram.com/citydownhillworldtour/"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="https://www.facebook.com/citydownhillworldtour?fref=ts"><i class="fa fa-facebook"></i></a></li>
+						<li><button class="sign-in" name="sign">SIGN IN</button></li>
+					</ul>
+				</div>
+				<div style="width: 320px; height: 160px; float: left;">
+					<a href="/"><img class="portal-logo" src="/client/img/portal-logo.png" alt="logo" title="CITY DOWNHILL" /></a>
+
+					<section class="portal-baner-partneri">
+						<article>
+							<div style="text-align: center; vertical-align: middle;"><img style="" src="/client/img/slovakia.jpg" height="94" width="140"></img></div>
+						</article>
+						<article>
+							<div style="text-align: center; vertical-align: middle;"><img style="" src="/client/img/epicTV-biele.jpg" height="94" width="140"></img></div>
+						</article>
+						<article>
+							<div style="text-align: center; vertical-align: middle;"><img style="" src="/client/img/leat.jpg" height="94" width="140"></img></div>
+						</article>
+					</section>
+				</div>
+				
+				
+				<div id="portal-menu-panel-container">
+					{% block menu %}
+						<ul id="portal-menu-panel">
+							{%for k in menu %}
+								<li class="portal-menu-entry">
+									<a href="{% if k.tags && k.tags.length > 0 && k.aid %}/article/{{k.aid}}{% endif %}{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endblock menu %}
+				</div>
+			</header>
+		</div>
+		
+		<div id="portal-content-container" style="background:#500035;">
+			<div id="portal-main-content-riderszone">
+				{% for widget in article.data %}
+					<a name="{{ widget.css.cssClass }}" ></a>
+					<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }} {{ widget.css.cssClass }}">
+						{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
+						{% include templatePath with widget only %}
+					</article>
+				{% endfor %}
+			</div>
+			
+			<div id="portal-content-contact">
+				<div class="portal-content-contact-container">
+					<h1 class="portal-content-title white">
+						CONTACT
+						<hr width="30%">
+					</h1>
+					<div class="contact-items-container">
+						<span>Address: No.28 - 63739 street lorem ipsum City, Country</span>
+						<span>Phone: <a href="tel:+123456789">+123456789</a></span>
+						<span>Email: <a href="mailto:support@yoursite.com">support@yoursite.com</a></span>
+					</div>
+					<div class="contact-social-container">
+						<div class="social-bar">
+							<ul class="social-bar">
+								<li><a href="https://www.facebook.com/citydownhillworldtour?fref=ts"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://instagram.com/citydownhillworldtour/"><i class="fa fa-instagram"></i></a></li>
+							</ul>
+						</div>
+						<div class="contact-links">
+							<a href="">About</a>
+							<a href="">FAQ</a>
+							<a href="">Contact</a>
+						</div>
+						<div class="contact-emailme">
+							<input type="text" placeholder="E-mail address">
+							<button>Go</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer-container">
+		<header id="main-footer">
+			Copyright &copy; 2015 City Downhill
+		</header>
+	</div>
+	<div class="scroll-top-wrapper ">
+		<span class="scroll-top-inner">
+			<i class="fa fa-2x fa-angle-up"></i>
+		</span>
+	</div>
+</body>
+<script>
+	// scroll to top button Show and Hide the Button
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+
+	// Scroll to Top
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+
+	$(function() {
+		$('.subscribe-message').hide();
+		$('.subscribe-error').hide();
+		$('.subscribe-button').click(function () {
+
+			var email = $('.subscribe-input').val();
+			var url = '/schema/uri~3A~2F~2Fregistries~2FsubscribedEmails~23views~2FsubscribedEmails~2Fnew';
+			var data = JSON.stringify({"subscribedEmails":{"email": email }});
+
+			$.ajax({
+				url: url,
+				type: 'PUT',
+				data: '{ "subscribedEmails": { "email": "' + email + '" } }',
+				contentType: "application/json",
+				json: true,
+				success: function (result) {
+					console.log(JSON.stringify(result));
+					console.log(result.id);
+					if (result && result.id) {
+						$('.subscribe-container').hide();
+						$('.subscribe-message').show();
+					} else {
+						$('.subscribe-container').hide();
+						$('.subscribe-error').show();
+					}
+				},
+				error: function (err) {
+					if (err) {
+						$('.subscribe-container').hide();
+						$('.subscribe-error').show();
+					}
+				}
+			});
+
+		});
+		$('.portal-club-logo').click(function () {
+			window.open($(this).data('url'), '_blank');
+		});
+		$('#portal-menu-panel-container').removeClass('mobile-visible');
+		var mainMenuHidden = true;
+		$('.toogle-menu').click(function (e) {
+			if (mainMenuHidden) {
+				$('#portal-menu-panel-container').addClass('mobile-visible');
+				mainMenuHidden = false;
+			} else {
+				$('#portal-menu-panel-container').removeClass('mobile-visible');
+				mainMenuHidden = true;
+			}
+			e.stopPropagation();
+			return false;
+		});
+		$('body').click(function () {
+			$('#portal-menu-panel-container').removeClass('mobile-visible');
+			mainMenuHidden = true;
+		});
+		// SHOWCASE
+		$('.x-portal-widget-showcase-view').each(function() {
+			$(this).bind('showcase-next', function() {
+				var idx = $(this).data('showcase-current') || 0;
+
+				$(this).find('article').eq(idx).fadeOut();
+
+				if (idx == $(this).find('article').length - 1) {
+					idx = 0;
+				} else {
+					++idx;
+				}
+
+				$(this).find('article').eq(idx).fadeIn();
+
+				$(this).data('showcase-current', idx);
+
+				var navigationEl = $(this).next();
+				navigationEl.find('a.item').removeClass('active');
+				navigationEl.find('a.item').eq(idx).addClass('active');
+
+				setTimeout(function() {
+					$('.x-portal-widget-showcase-view').triggerHandler('showcase-next');
+				}, 4000);
+			});
+
+		}).triggerHandler('showcase-next');
+		$('.x-portal-widget-showcase-navigation a.prev').click(function(e) {
+			var showcaseEl = $(this).parent().prev();
+			var navigationEl = $(this).parent();
+			var idx = showcaseEl.data('showcase-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = idx - 1;
+			if (idx < 0) {
+				idx = $('.x-portal-widget-showcase-view article').size()-1;
+			}
+			showcaseEl.find('article').eq(idx).fadeIn();
+			showcaseEl.data('showcase-current', idx);
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+		$('.x-portal-widget-showcase-navigation a.item').click(function(e) {
+			var showcaseEl = $(this).parents('.x-portal-widget-showcase-navigation').prev();
+			var navigationEl = $(this).parents('.x-portal-widget-showcase-navigation');
+			var idx = showcaseEl.data('showcase-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = $(this).index();
+			showcaseEl.find('article').eq(idx).fadeIn();
+			showcaseEl.data('showcase-current', idx);
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+		$('.x-portal-widget-showcase-navigation a.next').click(function(e) {
+			var showcaseEl = $(this).parent().prev();
+			var navigationEl = $(this).parent();
+			var idx = showcaseEl.data('showcase-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = (idx+1) % $('.x-portal-widget-showcase-view article').size();
+			showcaseEl.data('showcase-current', idx);
+			showcaseEl.find('article').eq(idx).fadeIn();
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+
+		// SHOWCASEVIDEO
+		$('.x-portal-widget-showcasevideo-view').each(function() {
+			$(this).bind('showcasevideo-next', function() {
+				var idx = $(this).data('showcasevideo-current') || 0;
+
+				$(this).find('article').eq(idx).fadeOut();
+
+				if (idx == $(this).find('article').length - 1) {
+					idx = 0;
+				} else {
+					++idx;
+				}
+
+				$(this).find('article').eq(idx).fadeIn();
+
+				$(this).data('showcasevideo-current', idx);
+
+				var navigationEl = $(this).next();
+				navigationEl.find('a.item').removeClass('active');
+				navigationEl.find('a.item').eq(idx).addClass('active');
+
+				setTimeout(function() {
+					$('.x-portal-widget-showcasevideo-view').triggerHandler('showcasevideo-next');
+				}, 4000);
+			});
+
+		}).triggerHandler('showcasevideo-next');
+		$('.x-portal-widget-showcasevideo-navigation a.prev').click(function(e) {
+			var showcaseEl = $(this).parent().prev();
+			var navigationEl = $(this).parent();
+			var idx = showcaseEl.data('showcasevideo-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = idx - 1;
+			if (idx < 0) {
+				idx = $('.x-portal-widget-showcasevideo-view article').size()-1;
+			}
+			showcaseEl.find('article').eq(idx).fadeIn();
+			showcaseEl.data('showcasevideo-current', idx);
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+		$('.x-portal-widget-showcasevideo-navigation a.item').click(function(e) {
+			var showcaseEl = $(this).parents('.x-portal-widget-showcasevideo-navigation').prev();
+			var navigationEl = $(this).parents('.x-portal-widget-showcasevideo-navigation');
+			var idx = showcaseEl.data('showcasevideo-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = $(this).index();
+			showcaseEl.find('article').eq(idx).fadeIn();
+			showcaseEl.data('showcasevideo-current', idx);
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+		$('.x-portal-widget-showcasevideo-navigation a.next').click(function(e) {
+			var showcaseEl = $(this).parent().prev();
+			var navigationEl = $(this).parent();
+			var idx = showcaseEl.data('showcasevideo-current') || 0;
+			showcaseEl.find('article').eq(idx).fadeOut();
+			idx = (idx+1) % $('.x-portal-widget-showcasevideo-view article').size();
+			showcaseEl.data('showcasevideo-current', idx);
+			showcaseEl.find('article').eq(idx).fadeIn();
+			navigationEl.find('a.item').removeClass('active');
+			navigationEl.find('a.item').eq(idx).addClass('active');
+			e.stopPropagation();
+			return false;
+		});
+
+		$('.x-portal-widget-gallery').each(function(index) {
+
+			$(this).find('.x-portal-widget-gallery-viewer-window-images').append(
+				$(this).find('.x-portal-widget-gallery-thm > img').clone()
+			);
+
+			$(this).bind('gallery-next', function(e, idx) {
+				
+			});
+
+			$(this).bind('gallery-show', function(e, idx) {
+				$(this).find('.x-portal-widget-gallery-viewer').css('display', 'table-cell');
+				$(this).data('gallery-current', idx);
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeIn();
+			});
+
+			$(this).bind('gallery-next', function(e) {
+				var idx = $(this).data('gallery-current');
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeOut();
+
+				if (idx == $(this).find('.x-portal-widget-gallery-viewer-window-images > img').length - 1) {
+					idx = 0;
+				} else {
+					++idx;
+				}
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeIn();
+
+				$(this).data('gallery-current', idx);
+			});
+
+			$(this).bind('gallery-prev', function(e) {
+				var idx = $(this).data('gallery-current');
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeOut();
+
+				if (idx == 0) {
+					idx = $(this).find('.x-portal-widget-gallery-viewer-window-images > img').length - 1;
+				} else {
+					--idx;
+				}
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeIn();
+
+				$(this).data('gallery-current', idx);
+			});
+
+			$(this).bind('gallery-close', function(e, idx) {
+				var idx = $(this).data('gallery-current');
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).hide();
+				$(this).find('.x-portal-widget-gallery-viewer').fadeOut();
+			});
+
+			$(this).find('.x-portal-widget-gallery-close-btn').on('click', function() {
+				$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-close');
+			});
+
+			$(this).find('.x-portal-widget-gallery-next-btn').on('click', function() {
+				$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-next');
+			});
+
+			$(this).find('.x-portal-widget-gallery-prev-btn').on('click', function() {
+				$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-prev');
+			});
+
+			$(this).find('.x-portal-widget-gallery-thm > img').each(function(idx){
+				$(this).on('click', function(evt) {
+					$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-show', [idx]);
+				});
+			});
+		});
+
+		$('#portal-menu-panel a[href*=#]:not([href=#])').click(function() {
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+				var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				if (target.length) {
+					$('html,body').animate({
+						scrollTop: target.offset().top
+					}, 1000);
+					return false;
+				}
+			}
+		});
+
+		$('.portal-baner-partneri').each(function() {
+			$(this).bind('showcase-next', function() {
+				var idx = $(this).data('showcase-current') || 0;
+
+				$(this).find('article').eq(idx).fadeOut();
+
+				if (idx == $(this).find('article').length - 1) {
+					idx = 0;
+				} else {
+					++idx;
+				}
+
+				$(this).find('article').eq(idx).fadeIn();
+
+				$(this).data('showcase-current', idx);
+
+				setTimeout(function() {
+					$('.portal-baner-partneri').triggerHandler('showcase-next');
+				}, 3000);
+			});
+		}).triggerHandler('showcase-next');
+
+	});
+
+	function updateMainContentHeight() {
+		if (parseInt($(window).width()) <= 400) {
+			$('#portal-main-content').css('min-height', '0px');
+		} else {
+			$('#portal-main-content').css('min-height', parseInt($('#portal-side-content').height()) + 20);
+		}
+		
+	}
+	$('.x-portal-widget-category-prev-btn').click(function () {
+		updateCategoryNextPrev(-1, 'category');
+	});
+	$('.x-portal-widget-category-next-btn').click(function () {
+		updateCategoryNextPrev(1, 'category');
+	});
+	$('.x-portal-widget-overview-prev-btn').click(function () {
+		updateCategoryNextPrev(-1, 'overview');
+	});
+	$('.x-portal-widget-overview-next-btn').click(function () {
+		updateCategoryNextPrev(1, 'overview');
+	});
+
+	function updateCategoryNextPrev(step, type) {
+		var pathParts = window.location.pathname.split('/');
+		if (window.location.pathname && window.location.pathname.indexOf('article') > -1) {
+			var currPage = 0;
+			if (pathParts && pathParts.length > 3) {
+				currPage = parseInt(pathParts[3]);
+			}
+			currPage = currPage + step;
+			if (currPage < 0) {
+				currPage = 0;
+			}
+			var nextpage = parseInt($('.x-portal-widget-' + type + '-navigation').data('nextpage'));
+			if (currPage >= nextpage) {
+				currPage = nextpage;
+			}
+			pathParts[3] = currPage;
+			window.location.pathname = pathParts.join('/');
+		} else {
+			var currPage = 0;
+			if (pathParts && pathParts.length > 1 && pathParts[1]) {
+				currPage = parseInt(pathParts[1]);
+			}
+			currPage = currPage + step;
+			if (currPage < 0) {
+				currPage = 0;
+			}
+			var nextpage = parseInt($('.x-portal-widget-' + type + '-navigation').data('nextpage'));
+			if (currPage >= nextpage) {
+				currPage = nextpage;
+			}
+			pathParts[1] = currPage;
+			window.location.pathname = pathParts.join('/');
+		}
+	}
+
+	$(function(){
+		var totalItemCount = $('.portal-content-location .showcase-item').size();
+		var marginLeft = 0;
+		var itemPos = 0;
+
+		$('.portal-content-location .x-portal-widget-showcase-navigation .next').unbind('click');
+		$('.portal-content-location .x-portal-widget-showcase-navigation .prev').unbind('click');
+		$('.portal-content-location .x-portal-widget-showcase-navigation .next').click(function (ev) {
+			itemPos++;
+			if (itemPos+3 < totalItemCount) {
+				marginLeft = marginLeft - 292;
+			} else {
+				itemPos = (totalItemCount-1)-3;
+				marginLeft = -292 * itemPos;
+			}
+			$('.portal-content-location .x-portal-widget-showcase-view-inner').animate({
+                marginLeft: marginLeft }, 500);
+
+			ev.stopPropagation();
+			return false;
+		});
+		$('.portal-content-location .x-portal-widget-showcase-navigation .prev').click(function (ev) {
+			itemPos--;
+			if (itemPos >= 0) {
+				marginLeft = marginLeft + 292;
+			} else {
+				marginLeft = 0;
+				itemPos = 0;
+			}
+			$('.portal-content-location .x-portal-widget-showcase-view-inner').animate({
+                marginLeft: marginLeft }, 500);
+
+			ev.stopPropagation();
+			return false;
+		});
+	});
+
+	$(function(){
+		var totalItemCount = $('.portal-content-riderszone .showcase-item').size();
+		var visibleNumber = 3;
+		var marginLeft = 0;
+		var itemPos = 0;
+
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .next').unbind('click');
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .prev').unbind('click');
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .next').click(function (ev) {
+			itemPos++;
+			if (itemPos+(visibleNumber-1) < totalItemCount) {
+				marginLeft = marginLeft - 300;
+			} else {
+				itemPos = (totalItemCount-1)-(visibleNumber-1);
+				marginLeft = -300 * itemPos;
+			}
+			$('.portal-content-riderszone .x-portal-widget-showcase-view-inner').animate({
+                marginLeft: marginLeft }, 500);
+
+			ev.stopPropagation();
+			return false;
+		});
+		$('.portal-content-riderszone .x-portal-widget-showcase-navigation .prev').click(function (ev) {
+			itemPos--;
+			if (itemPos >= 0) {
+				marginLeft = marginLeft + 300;
+			} else {
+				marginLeft = 0;
+				itemPos = 0;
+			}
+			$('.portal-content-riderszone .x-portal-widget-showcase-view-inner').animate({
+                marginLeft: marginLeft }, 500);
+
+			ev.stopPropagation();
+			return false;
+		});
+	});
+</script>
+</html>
