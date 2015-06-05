@@ -3,26 +3,26 @@
 	"id": "uri://registries/portal#",
 	"menu": {
 		"table": "portalMenu",
+		"title": "Portálové menu",
+		"xxtransCode": "schema.portal.title",
+		"listFields": [],
 		"security": {
 			"create": {
 				"static": [
-					"Security - write"
+					"System User"
 				]
 			},
 			"read": {
 				"static": [
-					"Security - read"
+					"System User"
 				]
 			},
 			"modify": {
 				"static": [
-					"Security - write"
+					"System User"
 				]
 			}
 		},
-		"title": "Portálové menu",
-		"xxtransCode": "schema.portal.title",
-		"listFields": [],
 		"properties": {
 			"index": {
 				"type": "object",
