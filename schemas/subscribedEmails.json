@@ -28,23 +28,6 @@
 			"title": "Prihlásené emaily",
 			"transCode": "schema.subscribedEmails.title",
 			"table": "subscribedEmails",
-			"security": {
-				"create": {
-					"static": [
-						"System User"
-					]
-				},
-				"read": {
-					"static": [
-						"System User"
-					]
-				},
-				"modify": {
-					"static": [
-						"System User"
-					]
-				}
-			},
 			"properties": {
 				"subscribedEmails": {
 					"extends": "uri://registries/subscribedEmails#blocks/baseData"
