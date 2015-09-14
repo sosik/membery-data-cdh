@@ -1,0 +1,18 @@
+{
+	"meta": {
+		"name": "showcaseHorizontal",
+		"element": "<div></div>",
+		"type": "showcaseHorizontal",
+		"resolver": "category",
+		"title": "Horizontálny výklad",
+		"desc": "Najhorúcejšie články v horizontálnom zobrazení",
+		"icon": "img/block-topics.svg"
+	},
+	"data": {
+		"tags": []
+	},
+	"config": {
+		"displayBlocks": ["title", "abstract", "content", "image656"],
+		"thumbnailBlock": "image656"
+	}
+}
