@@ -747,6 +747,10 @@ a .slider-item-image:focus{
 	color: white;
 }
 
+.portal-content-nextrace .x-portal-widget-showcase-view-textblock h2 a{
+	display: block !important;
+}
+
 .portal-content-nextrace .x-portal-widget-showcase-view-textblock a:last-child{
 	display: none;
 }
