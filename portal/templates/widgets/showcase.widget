@@ -1,63 +1,16 @@
-<div class="portal-content-title">
-
-</div>
-
+<div class="portal-content-title"></div>
 <div class="x-portal-widget-showcase-view">
 <div class="x-portal-widget-showcase-view-inner">
 {% for article in data.articles %}
 	<article class="showcase-item-{{ article.id }} showcase-item">
 		<div class="portal-article-decorator"></div>
-		{% if article.img1170.img %}
 			<div class="border">
-				<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img1170.img|safe }}'); background-size: cover; background-repeat: no-repeat; background-position: right bottom;">
-	
-					<div class="x-portal-widget-showcase-view-textblock">
-						<a href="/article/{{ article.id }}">{{ article.title|safe }}</a>
-						<div class="abstract">{{ article.abstract|safe }}</div>
-						{{ article.content|safe }}
-						<a href="/article/{{ article.id }}">Read more ..</a>
+				{% if article.thumbnail && article[article.thumbnail] && article[article.thumbnail].img %}
+					<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article[article.thumbnail].img|safe }}'); background-size: cover; background-repeat: no-repeat; background-position: right bottom;">
 					</div>
-
-				</div>
+				{% endif %}
 			</div>
-		{% endif %}
-		{% if article.img.img %}
-			<div class="border">
-				<div class="x-portal-widget-showcase-diamond">
-					<div class="x-portal-widget-showcase-diamond-inner">
-						<!--img src="{{ article.img.img|safe }}"/-->
-					</div>
-				</div>
-				<div class="only-location" style="background: url('{{ article.img.img|safe }}'); background-size: contain; background-repeat: no-repeat; background-position: 50% 50%; width: 80px; height: 100px; position: absolute; top: 8px; left: 83px;"></div>
-				<div class="only-riderszone" style="background: #b9b9b9; -webkit-clip-path: polygon(0px 110px, 110px 0px, 220px 110px, 110px 220px); position: absolute; width: 220px; height: 220px; margin-left: -15px; margin-top: -15px;"></div>
-				<div class="only-riderszone" style="background: url('{{ article.img.img|safe }}'); background-size: cover; background-repeat: no-repeat; ; -webkit-clip-path: polygon(0px 95px, 95px 0px, 190px 95px, 95px 190px); position: absolute; width: 190px; height: 190px; "></div>
-	
-				<div class="x-portal-widget-showcase-view-image" style="background: url('{{ article.img.img|safe }}'); background-size: cover; background-repeat: no-repeat; ">
-	
-					<div class="x-portal-widget-showcase-view-textblock">
-						<a href="/article/{{ article.id }}">{{ article.title|safe }}</a>
-						<div class="abstract">{{ article.abstract|safe }}</div>
-						{{ article.content|safe }}
-						<a href="/article/{{ article.id }}">Read more ..</a>
-					</div>
-	
-					
-				</div>
-			</div>
-		{% endif %}
 	</article>
 {% endfor %}
 </div>
-</div>
-
-<div class="x-portal-widget-showcase-navigation">
-	<a href="#" class="prev"><i class="fa fa-2x fa-arrow-circle-o-left"></i>
-	</a>
-	<div>
-		{% for article in data.articles %}
-			<a href="#" class="item"></a>
-		{% endfor %}
-	</div>
-	<a href="#" class="next"><i class="fa fa-2x fa-arrow-circle-o-right"></i>
-	</a>
 </div>
