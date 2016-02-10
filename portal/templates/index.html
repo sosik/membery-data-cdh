@@ -22,7 +22,6 @@
 </head>
 
 <body>
-	<a name="top"></a>
 	<div id="portal-main-container">
 		<div id="portal-header-container">
 			<header id="portal-main-header">
@@ -63,7 +62,7 @@
 						<ul id="portal-menu-panel">
 							{%for k in menu %}
 								<li class="portal-menu-entry">
-									<a href="{% if k.tags && k.tags.length > 0 && k.aid %}/article/{{k.aid}}{% endif %}{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
+									<a href="{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
 								</li>
 							{% endfor %}
 						</ul>
@@ -75,7 +74,7 @@
 		<div id="portal-content-container">
 			<div id="portal-main-content">
 				{% for widget in article.data %}
-					<a name="{{ widget.css.cssClass }}" ></a>
+					<div id="{{widget.css.cssClass}}"></div>
 					<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }} {{ widget.css.cssClass }}">
 						{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
 						{% include templatePath with widget only %}
@@ -163,48 +162,42 @@
 			Copyright &copy; 2015 City Downhill
 		</header>
 	</div>
-	<div class="scroll-top-wrapper ">
-		<span class="scroll-top-inner">
-			<i class="fa fa-2x fa-angle-up"></i>
-		</span>
-	</div>
 </body>
 <script>
-	// scroll to top button Show and Hide the Button
-	$(function(){
-	 
-		$(document).on( 'scroll', function(){
-	 
-			if ($(window).scrollTop() > 100) {
-				$('.scroll-top-wrapper').addClass('show');
-			} else {
-				$('.scroll-top-wrapper').removeClass('show');
-			}
-		});
-	});
+	// animated scrolling
+	$(function() {
+		var menu = $('#portal-menu-panel'),
+			menuLinks = menu.find('a');
 
-	// Scroll to Top
-	$(function(){
-	 
-		$(document).on( 'scroll', function(){
-	 
-			if ($(window).scrollTop() > 100) {
-				$('.scroll-top-wrapper').addClass('show');
-			} else {
-				$('.scroll-top-wrapper').removeClass('show');
-			}
-		});
-	 
-		$('.scroll-top-wrapper').on('click', scrollToTop);
+		menuLinks.on('click', function(event){
+			var jumpTo = this.hash;
+
+			$('body').animate({scrollTop: $(jumpTo).offset().top}, 1000, function(){
+				window.location.hash = jumpTo;
+			});
+			event.preventDefault();
+		});	
+
+		// back to top
+		var backToTop = $('<a>', {
+							href: '#portal-main-container',
+							class: 'back-to-top',
+							html: '<i class="fa fa-2x fa-angle-up"></i>'
+						});
+		backToTop
+			.hide()
+			.appendTo('body')
+			.on('click', function(event){
+				event.preventDefault();
+				$('body').animate({scrollTop: 0})
+			});
+
+		var win = $(window);
+		win.on('scroll', function(){
+			if ( win.scrollTop() >= 300 ) backToTop.fadeIn();
+			else backToTop.hide();
+		})
 	});
-	 
-	function scrollToTop() {
-		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
-		element = $('body');
-		offset = element.offset();
-		offsetTop = offset.top;
-		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
-	}
 
 	$(function() {
 		$('.subscribe-message').hide();
@@ -510,7 +503,6 @@
 				}, 3000);
 			});
 		}).triggerHandler('showcase-next');
-
 	});
 
 	$('.x-portal-widget-category-prev-btn').click(function () {
