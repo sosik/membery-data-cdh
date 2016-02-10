@@ -164,6 +164,17 @@
 	</div>
 </body>
 <script>
+	//dynamic resize showcase height
+	function changeHeight() {
+		if($(window).width() < 1170) {
+			$('.portal-content-titulka').find('.x-portal-widget-showcase-view').height( $(window).width() / 2.05263158);
+			$('.portal-content-titulka').find('.x-portal-widget-showcase-view-image').height( $(window).width() / 2.05263158);
+		}
+	}
+	$(document).ready(changeHeight);
+	$(window).resize(changeHeight);
+	//end dynamic resize showcase
+	
 	// animated scrolling
 	$(function() {
 		var menu = $('#portal-menu-panel'),
@@ -467,19 +478,16 @@
 					$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-show', [idx]);
 				});
 			});
-		});
 
-		$('#portal-menu-panel a[href*=#]:not([href=#])').click(function() {
-			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-				var target = $(this.hash);
-				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-				if (target.length) {
-					$('html,body').animate({
-						scrollTop: target.offset().top
-					}, 1000);
-					return false;
+			$(document).on('keyup', function(e){
+				if (e.which == 27) {
+					$('.x-portal-widget-gallery').closest('.x-portal-widget-gallery').triggerHandler('gallery-close');
+				} else if (e.which == 37) {
+					$('.x-portal-widget-gallery').closest('.x-portal-widget-gallery').triggerHandler('gallery-prev');
+				} else if (e.which == 39) {
+					$('.x-portal-widget-gallery').closest('.x-portal-widget-gallery').triggerHandler('gallery-next');
 				}
-			}
+			});
 		});
 
 		$('.portal-baner-partneri').each(function() {
