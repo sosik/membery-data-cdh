@@ -22,7 +22,6 @@
 </head>
 
 <body>
-	<a name="top"></a>
 	<div id="portal-main-container">
 		<div id="portal-header-container">
 			<header id="portal-main-header">
@@ -45,9 +44,9 @@
 						<!-- <article>
 							<div style="text-align: center; vertical-align: middle;"><img style="" src="/client/img/slovakia.jpg" height="94" width="140"></img></div>
 						</article> -->
-						<article>
+						<!-- <article>
 							<div style="text-align: center; vertical-align: middle;"><img style="" src="/client/img/epicTV-biele.jpg" height="94" width="140"></img></div>
-						</article>
+						</article> -->
 						<article>
 							<div style="text-align: center; vertical-align: middle;"><img style="" src="/client/img/leat.jpg" height="94" width="140"></img></div>
 						</article>
@@ -63,7 +62,7 @@
 						<ul id="portal-menu-panel">
 							{%for k in menu %}
 								<li class="portal-menu-entry">
-									<a href="{% if k.tags && k.tags.length > 0 && k.aid %}/article/{{k.aid}}{% endif %}{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
+									<a href="{% if k.hash %}#{{k.hash}}{% endif %}"><span>{{k.name}}<span></a>
 								</li>
 							{% endfor %}
 						</ul>
@@ -75,7 +74,7 @@
 		<div id="portal-content-container">
 			<div id="portal-main-content">
 				{% for widget in article.data %}
-					<a name="{{ widget.css.cssClass }}" ></a>
+					<div id="{{widget.css.cssClass}}"></div>
 					<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }} {{ widget.css.cssClass }}">
 						{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
 						{% include templatePath with widget only %}
@@ -111,7 +110,7 @@
 						<div class="partners-item"><img src="../client/img/Membery300x190.png" height="190" width="280" alt=""></div>
 						<div class="partners-item"><img src="../client/img/leatt300x200.jpg" height="190" width="280" alt=""></div>
 						<!-- <div class="partners-item"><img src="../client/img/slovakia300x200.jpg" height="190" width="280" alt=""></div> -->
-						<div class="partners-item"><img src="../client/img/epicTV300x200.jpg" height="190" width="280" alt=""></div>
+						<!-- <div class="partners-item"><img src="../client/img/epicTV300x200.jpg" height="190" width="280" alt=""></div> -->
 					</div>
 				</div>
 			</div>
@@ -163,48 +162,53 @@
 			Copyright &copy; 2015 City Downhill
 		</header>
 	</div>
-	<div class="scroll-top-wrapper ">
-		<span class="scroll-top-inner">
-			<i class="fa fa-2x fa-angle-up"></i>
-		</span>
-	</div>
 </body>
 <script>
-	// scroll to top button Show and Hide the Button
-	$(function(){
-	 
-		$(document).on( 'scroll', function(){
-	 
-			if ($(window).scrollTop() > 100) {
-				$('.scroll-top-wrapper').addClass('show');
-			} else {
-				$('.scroll-top-wrapper').removeClass('show');
-			}
-		});
-	});
-
-	// Scroll to Top
-	$(function(){
-	 
-		$(document).on( 'scroll', function(){
-	 
-			if ($(window).scrollTop() > 100) {
-				$('.scroll-top-wrapper').addClass('show');
-			} else {
-				$('.scroll-top-wrapper').removeClass('show');
-			}
-		});
-	 
-		$('.scroll-top-wrapper').on('click', scrollToTop);
-	});
-	 
-	function scrollToTop() {
-		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
-		element = $('body');
-		offset = element.offset();
-		offsetTop = offset.top;
-		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	//dynamic resize showcase height
+	function changeHeight() {
+		if($(window).width() < 1170) {
+			$('.portal-content-titulka').find('.x-portal-widget-showcase-view').height( $(window).width() / 2.05263158);
+			$('.portal-content-titulka').find('.x-portal-widget-showcase-view-image').height( $(window).width() / 2.05263158);
+		}
 	}
+	$(document).ready(changeHeight);
+	$(window).resize(changeHeight);
+	//end dynamic resize showcase
+	
+	// animated scrolling
+	$(function() {
+		var menu = $('#portal-menu-panel'),
+			menuLinks = menu.find('a');
+
+		menuLinks.on('click', function(event){
+			var jumpTo = this.hash;
+
+			$('body').animate({scrollTop: $(jumpTo).offset().top}, 1000, function(){
+				window.location.hash = jumpTo;
+			});
+			event.preventDefault();
+		});	
+
+		// back to top
+		var backToTop = $('<a>', {
+							href: '#portal-main-container',
+							class: 'back-to-top',
+							html: '<i class="fa fa-2x fa-angle-up"></i>'
+						});
+		backToTop
+			.hide()
+			.appendTo('body')
+			.on('click', function(event){
+				event.preventDefault();
+				$('body').animate({scrollTop: 0})
+			});
+
+		var win = $(window);
+		win.on('scroll', function(){
+			if ( win.scrollTop() >= 300 ) backToTop.fadeIn();
+			else backToTop.hide();
+		})
+	});
 
 	$(function() {
 		$('.subscribe-message').hide();
@@ -474,19 +478,16 @@
 					$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-show', [idx]);
 				});
 			});
-		});
 
-		$('#portal-menu-panel a[href*=#]:not([href=#])').click(function() {
-			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-				var target = $(this.hash);
-				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-				if (target.length) {
-					$('html,body').animate({
-						scrollTop: target.offset().top
-					}, 1000);
-					return false;
+			$(document).on('keyup', function(e){
+				if (e.which == 27) {
+					$('.x-portal-widget-gallery').closest('.x-portal-widget-gallery').triggerHandler('gallery-close');
+				} else if (e.which == 37) {
+					$('.x-portal-widget-gallery').closest('.x-portal-widget-gallery').triggerHandler('gallery-prev');
+				} else if (e.which == 39) {
+					$('.x-portal-widget-gallery').closest('.x-portal-widget-gallery').triggerHandler('gallery-next');
 				}
-			}
+			});
 		});
 
 		$('.portal-baner-partneri').each(function() {
@@ -510,7 +511,6 @@
 				}, 3000);
 			});
 		}).triggerHandler('showcase-next');
-
 	});
 
 	$('.x-portal-widget-category-prev-btn').click(function () {
